@@ -1,0 +1,17 @@
+CHUNK_SIZE = 500
+CHUNK_OVERLAP = 100
+
+
+EMBEDDING_MODEL = "BAAI/bge-m3"
+
+LLM_MODEL = "qwen2.5:1.5b"
+
+TEMPERATURE = 0
+
+MAX_NEW_TOKENS = 512
+
+TOP_K = 3
+
+COLLECTION_NAME = "bpd_documents"
+
+PERSIST_DIRECTORY = "./chroma_db"
