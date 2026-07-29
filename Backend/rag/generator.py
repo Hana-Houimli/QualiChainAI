@@ -1,3 +1,20 @@
+class Generator:
+
+    def __init__(self, llm):
+        self.llm = llm
+
+
+    def generate(self, prompt):
+
+        response = self.llm.invoke(prompt)
+
+        return response
+
+
+
+
+
+"""
 from langchain_ollama import ChatOllama
 
 
@@ -11,4 +28,4 @@ class Generator:
 
     def generate(self, prompt):
         response = self.llm.invoke(prompt)
-        return response.content
+        return response.content"""

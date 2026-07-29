@@ -1,15 +1,24 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from api.chat import router
+
 
 app = FastAPI()
 
-items = []
 
-@app.get("/")
-def root():
-    return {"message": "Hello, World!"}
+app.include_router(router)
 
-@app.post("/items")
-def create_item(item : str):
-    items.append(item)
-    return item
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+from fastapi.middleware.cors import CORSMiddleware
+
 
