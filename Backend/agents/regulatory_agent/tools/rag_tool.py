@@ -1,16 +1,16 @@
 from langchain_core.tools import tool
 
-
-def create_rag_tool(name, description, rag_pipeline):
+def create_rag_tool(name,description, vector_db):
 
     @tool(name, description=description)
-    def search_tool(question: str):
+    def retrieve_documents(question: str) -> str:
 
-        response = rag_pipeline.answer(
-            k=5,
-            question=question
-        )
 
-        return response["answer"]
+        docs = vector_db.retrieve(question, k=3)
 
-    return search_tool
+        if not docs:
+            return "No relevant documents found."
+
+        return "\n\n".join(doc.page_content for doc in docs)
+
+    return retrieve_documents

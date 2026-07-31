@@ -4,12 +4,8 @@ from langchain.agents import create_agent
 class RegulatoryAgent:
 
 
-    def __init__(
-        self,
-        model,
-        tools,
-        system_prompt
-    ):
+    def __init__(self,model,tools,system_prompt):
+        
 
         self.agent = create_agent(
             model=model,
