@@ -1,16 +1,49 @@
-# React + Vite
+# QualiChain AI — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Plateforme SaaS de gestion de la qualité pharmaceutique (GDP/BPD), développée pour PharmaLink.
 
-Currently, two official plugins are available:
+## Stack
+React 19 · TypeScript · Vite · Tailwind CSS · React Router · TanStack Query · Zustand · React Hook Form · Framer Motion · Recharts · Lucide Icons
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Démarrage
 
-## React Compiler
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+L'application démarre sur http://localhost:5173
 
-## Expanding the ESLint configuration
+## Build de production
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run build
+npm run preview
+```
+
+## Architecture
+
+```
+src/
+  components/
+    ui/          → Button, Card, Badge, Icon (primitives)
+    layout/       → Sidebar, Header, AppLayout, MobileNav
+    dashboard/    → KPI cards, charts, compliance score, risk heat map
+    shared/       → PageHeader, DataTable, Skeleton/Empty/Error states
+  pages/           → Une page par module (audits, capa, risks, documents, iot, reports, training, admin, settings, ai-assistant)
+  services/        → mockData.ts (données fictives réalistes, à remplacer par des appels API)
+  store/           → useUiStore (thème clair/sombre, sidebar)
+  types/           → Types partagés (AuditItem, CapaItem, RiskItem, etc.)
+  routes/          → navConfig.ts (structure de navigation)
+```
+
+## Intégration backend
+
+Toutes les données proviennent actuellement de `src/services/mockData.ts`. Pour brancher une vraie API :
+1. Créer des hooks React Query dans `src/hooks/` (ex. `useAudits.ts`) qui appellent votre client HTTP dans `src/services/`.
+2. Remplacer les imports de `mockData` dans les pages par ces hooks.
+3. Les types dans `src/types/index.ts` sont déjà prêts à représenter les payloads API.
+
+## Thème
+
+Le thème clair/sombre est piloté par `useUiStore` (Zustand) et persisté dans `localStorage`. Toutes les couleurs sont définies comme tokens Tailwind dans `tailwind.config.js`.

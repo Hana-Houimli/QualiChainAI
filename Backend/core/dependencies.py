@@ -1,17 +1,21 @@
 from rag.config import *
-from rag.vector_store import VectorStore
-from agents.regulatory_agent.regulatory_prompt import regulatory_prompt 
-from agents.regulatory_agent.tools import (
-    create_rag_tool, websearch_tool
+from rag import VectorStore
+from prompts import regulatory_prompt,audit_prompt
+from tools import (
+    create_rag_tool, websearch_tool,checklist_search
 )
 
-from agents.regulatory_agent.agent import RegulatoryAgent
-from langchain_ollama import ChatOllama
+from agents.agent import Agent
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+CHROMA_PATH = BASE_DIR / "storage" / "chroma_db"
 
 
-vectordb_gdp = VectorStore(embedding_model= EMBEDDING_MODEL,collection_name="gdp_documents",persist_directory="../storage/chroma_db")
+vectordb_gdp = VectorStore(embedding_model= EMBEDDING_MODEL,collection_name="gdp_documents",persist_directory=CHROMA_PATH)
 
-vectordb_sop = VectorStore(embedding_model=EMBEDDING_MODEL,collection_name="sop_documents",persist_directory="../storage/chroma_db")
+vectordb_sop = VectorStore(embedding_model=EMBEDDING_MODEL,collection_name="sop_documents",persist_directory=CHROMA_PATH)
 
 
 
@@ -37,17 +41,13 @@ sop_research = create_rag_tool(
 
 
 
-llm = ChatOllama(
-            model="qwen3:1.7b",
-            temperature=0,
-            num_predict=512,
-            #think= False
-        )
+
 # Agents
 
-regulatory_agent = RegulatoryAgent(
-    model=llm,
+regulatory_agent = Agent(
     tools=[gdp_research,sop_research,websearch_tool],
     system_prompt=regulatory_prompt,
     
 )
+
+audit_agent = Agent(tools=[checklist_search],system_prompt=audit_prompt)

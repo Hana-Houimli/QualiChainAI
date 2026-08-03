@@ -1,0 +1,452 @@
+{
+  "type_audit": "Audit chaîne du froid pharmaceutique",
+  "description": "Checklist d'audit destinée à évaluer la maîtrise de bout en bout de la chaîne du froid (stockage réfrigéré/congelé, emballages isothermes, transport, distribution) pour les produits thermosensibles (vaccins, produits biologiques, etc.), au regard des référentiels BPD/GDP.",
+  "referentiel_reglementaire": [
+    "OMS - Bonnes Pratiques de Distribution (WHO TRS 957, Annex 5, 2010)",
+    "OMS - WHO TRS 961, Annex 9 - Model Guidance for Storage and Transport of Time- and Temperature-Sensitive Pharmaceutical Products (2013)",
+    "Lignes directrices UE 2013/C 343/01 relatives aux Bonnes Pratiques de Distribution en gros des médicaments à usage humain",
+    "Directive 2001/83/CE modifiée par la Directive 2011/62/UE (médicaments falsifiés)",
+    "Règlement délégué (UE) 2016/161 relatif aux dispositifs de sécurité",
+    "ICH Q9 - Gestion du risque qualité",
+    "ICH Q10 - Système qualité pharmaceutique",
+    "EU GMP Annex 15 - Qualification et Validation",
+    "OMS - PQS (Performance, Quality and Safety) pour les équipements de la chaîne du froid des vaccins"
+  ],
+  "sections": [
+    {
+      "nom_section": "1. Système Qualité et Documentation",
+      "points_controle": [
+        {
+          "id": "FRO-001",
+          "question": "Une politique de gestion de la chaîne du froid est-elle formalisée, couvrant l'ensemble du parcours produit du fabricant au point d'utilisation ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Politique chaîne du froid, cartographie du flux produit",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-002",
+          "question": "Des procédures spécifiques existent-elles pour chaque plage de température gérée (2-8°C, -20°C, -70°C/ultra-congelé) ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "SOP par plage de température",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-003",
+          "question": "Un plan de gestion des risques de rupture de chaîne du froid (Cold Chain Risk Management) est-il documenté et mis à jour ?",
+          "reference_reglementaire": "ICH Q9, WHO TRS 961",
+          "criticite": "Majeur",
+          "preuves_attendues": "Plan de gestion des risques, revue périodique",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "2. Personnel et Formation",
+      "points_controle": [
+        {
+          "id": "FRO-004",
+          "question": "Le personnel manipulant des produits thermosensibles a-t-il reçu une formation spécifique sur les risques de rupture de la chaîne du froid et les gestes critiques (temps d'ouverture des enceintes, emballage rapide) ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Attestations de formation spécifique chaîne du froid",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-005",
+          "question": "Un référent/pilote chaîne du froid est-il désigné avec autorité pour statuer sur les décisions de blocage en cas d'excursion ?",
+          "reference_reglementaire": "EU GDP Chapitre 2.2",
+          "criticite": "Majeur",
+          "preuves_attendues": "Fiche de fonction du référent chaîne du froid, délégation",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "3. Équipements de Stockage à Température Dirigée",
+      "points_controle": [
+        {
+          "id": "FRO-006",
+          "question": "Les enceintes frigorifiques (chambres froides, réfrigérateurs, congélateurs, ultra-congélateurs) sont-elles qualifiées à l'installation et lors de toute modification majeure ?",
+          "reference_reglementaire": "EU GMP Annex 15",
+          "criticite": "Critique",
+          "preuves_attendues": "Rapports de qualification QI/QO/QP des enceintes",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-007",
+          "question": "Une cartographie thermique tridimensionnelle est-elle réalisée pour chaque enceinte, en charge maximale et à vide, avec identification des points chauds/froids ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Rapports de cartographie, plan d'implantation des sondes de surveillance",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-008",
+          "question": "Les enceintes disposent-elles d'un système de secours en cas de panne (redondance d'équipement, groupe électrogène automatique, contrat de dépannage prioritaire) ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Plan de continuité, tests de bascule sur groupe électrogène, contrats de maintenance d'urgence",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-009",
+          "question": "La capacité de stockage des enceintes est-elle dimensionnée pour éviter la surcharge et garantir une circulation d'air homogène ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Mineur",
+          "preuves_attendues": "Calcul de capacité, observation du taux de remplissage",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-010",
+          "question": "Un plan de maintenance préventive spécifique aux équipements frigorifiques (dégivrage, contrôle des joints, contrôle des compresseurs) est-il appliqué ?",
+          "reference_reglementaire": "EU GDP Chapitre 3.9",
+          "criticite": "Majeur",
+          "preuves_attendues": "Plan de maintenance, historique des interventions",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "4. Surveillance et Monitoring Continu de la Température",
+      "points_controle": [
+        {
+          "id": "FRO-011",
+          "question": "Chaque enceinte à température dirigée est-elle équipée d'un système de monitoring continu et automatisé (enregistrement en continu, non manuel) ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Systèmes d'enregistrement continu, extraction de données",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-012",
+          "question": "Les capteurs sont-ils positionnés aux points les plus représentatifs (ou les plus défavorables identifiés par la cartographie) de chaque enceinte ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Plan d'implantation des capteurs corrélé à la cartographie",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-013",
+          "question": "Un système d'alarme redondant (locale et déportée/télésurveillance) alerte-t-il le personnel d'astreinte 24h/24 en cas de dépassement de seuil ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Configuration des alarmes, tests périodiques, procédure d'astreinte",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-014",
+          "question": "L'étalonnage des sondes de température est-il réalisé selon une fréquence définie par un laboratoire accrédité, avec traçabilité métrologique ?",
+          "reference_reglementaire": "EU GMP Annex 15, ISO 17025",
+          "criticite": "Critique",
+          "preuves_attendues": "Certificats d'étalonnage, plan métrologique",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-015",
+          "question": "Les données de température sont-elles sauvegardées de manière sécurisée avec un système de secours empêchant toute perte de données (intégrité des données/ALCOA+) ?",
+          "reference_reglementaire": "EU GDP Chapitre 4, principes ALCOA+",
+          "criticite": "Majeur",
+          "preuves_attendues": "Procédure de sauvegarde, test de restauration",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "5. Gestion des Excursions de Température",
+      "points_controle": [
+        {
+          "id": "FRO-016",
+          "question": "Une procédure décisionnelle formalisée (arbre de décision) permet-elle de statuer rapidement sur le devenir des produits en cas d'excursion (libération, quarantaine, destruction) ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Arbre de décision, exemples de cas traités",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-017",
+          "question": "L'évaluation d'impact d'une excursion s'appuie-t-elle sur les données de stabilité fournies par le fabricant (courbes de stabilité en excursion, budget thermique cumulé) ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Données de stabilité fabricant, calcul du budget thermique cumulé (Mean Kinetic Temperature le cas échéant)",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-018",
+          "question": "Le délai entre la détection d'une alarme et la prise de décision/action corrective est-il mesuré et conforme à un objectif défini ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Majeur",
+          "preuves_attendues": "Indicateur de délai de réaction, historique des alarmes traitées",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-019",
+          "question": "Les excursions récurrentes sur une même enceinte font-elles l'objet d'une analyse de cause racine avec plan d'action structurel (et non uniquement correctif ponctuel) ?",
+          "reference_reglementaire": "ICH Q9",
+          "criticite": "Majeur",
+          "preuves_attendues": "Analyse de tendance, CAPA structurelles",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "6. Emballages Isothermes et Transport de la Chaîne du Froid",
+      "points_controle": [
+        {
+          "id": "FRO-020",
+          "question": "Les emballages isothermes (glacières passives, actives, réfrigérants) sont-ils qualifiés pour la durée maximale de transport prévue, en conditions climatiques extrêmes (été et hiver) ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Études de qualification des emballages par saison",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-021",
+          "question": "Une procédure de conditionnement définit-elle précisément la préparation des emballages (pré-conditionnement des accumulateurs de froid, quantité, disposition) ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Majeur",
+          "preuves_attendues": "SOP de conditionnement, check-list de préparation",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-022",
+          "question": "Chaque colis expédié dans la chaîne du froid contient-il un dispositif de suivi de température (data logger ou indicateur) lisible à réception ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Data loggers/indicateurs, procédure de lecture à réception",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "7. Gestion des Écarts et CAPA",
+      "points_controle": [
+        {
+          "id": "FRO-023",
+          "question": "Toute panne ou alarme d'équipement de la chaîne du froid génère-t-elle systématiquement une fiche d'écart tracée dans le système qualité ?",
+          "reference_reglementaire": "ICH Q10",
+          "criticite": "Majeur",
+          "preuves_attendues": "Registre des écarts chaîne du froid, taux de déclaration",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-024",
+          "question": "Les actions correctives suite à une panne d'équipement (remplacement, renforcement de la maintenance, révision des seuils) sont-elles vérifiées quant à leur efficacité ?",
+          "reference_reglementaire": "ICH Q10",
+          "criticite": "Majeur",
+          "preuves_attendues": "CAPA équipements, preuves de vérification d'efficacité",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "8. Gestion des Risques Qualité",
+      "points_controle": [
+        {
+          "id": "FRO-025",
+          "question": "Une analyse de risque (AMDEC) a-t-elle été réalisée sur l'ensemble de la chaîne du froid (stockage, emballage, transport, dernier kilomètre) afin d'identifier les points de vulnérabilité ?",
+          "reference_reglementaire": "ICH Q9",
+          "criticite": "Critique",
+          "preuves_attendues": "AMDEC chaîne du froid, matrice de criticité, plans de mitigation",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-026",
+          "question": "Les scénarios de rupture prolongée de la chaîne du froid (panne électrique générale, catastrophe naturelle) sont-ils intégrés dans un plan de continuité d'activité ?",
+          "reference_reglementaire": "ICH Q9",
+          "criticite": "Majeur",
+          "preuves_attendues": "Plan de continuité d'activité, tests de simulation",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "9. Traçabilité des Produits et des Lots",
+      "points_controle": [
+        {
+          "id": "FRO-027",
+          "question": "Le système permet-il d'associer, pour chaque lot, l'historique complet des conditions de température depuis la réception jusqu'à l'expédition finale ?",
+          "reference_reglementaire": "EU GDP Chapitre 4, 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Historique de température par lot, test de traçabilité",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-028",
+          "question": "Les certificats de conformité thermique (résumé du profil de température) sont-ils générés et archivés pour chaque expédition sensible ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Majeur",
+          "preuves_attendues": "Exemples de certificats/rapports de température par expédition",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "10. Gestion des Rappels Produits",
+      "points_controle": [
+        {
+          "id": "FRO-029",
+          "question": "En cas de rappel lié à une non-conformité de la chaîne du froid, la procédure permet-elle d'identifier rapidement tous les lots exposés à une même défaillance d'équipement ?",
+          "reference_reglementaire": "EU GDP Chapitre 8",
+          "criticite": "Critique",
+          "preuves_attendues": "Corrélation entre historique des pannes et lots stockés, exemple de recherche croisée",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "11. Gestion des Fournisseurs et Prestataires de la Chaîne du Froid",
+      "points_controle": [
+        {
+          "id": "FRO-030",
+          "question": "Les fournisseurs d'équipements frigorifiques, d'emballages isothermes et de solutions de monitoring sont-ils qualifiés selon des critères techniques définis (performance, conformité aux normes) ?",
+          "reference_reglementaire": "EU GDP Chapitre 7",
+          "criticite": "Majeur",
+          "preuves_attendues": "Dossiers de qualification fournisseurs, spécifications techniques",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-031",
+          "question": "Les prestataires assurant le transport à température dirigée sont-ils audités spécifiquement sur leur capacité à maîtriser la chaîne du froid (équipements, procédures, formation) ?",
+          "reference_reglementaire": "EU GDP Chapitre 7.3, WHO TRS 961",
+          "criticite": "Majeur",
+          "preuves_attendues": "Rapports d'audit prestataires chaîne du froid",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "12. Gestion Énergétique et Continuité",
+      "points_controle": [
+        {
+          "id": "FRO-032",
+          "question": "L'alimentation électrique des équipements critiques est-elle sécurisée (double alimentation, onduleur, groupe électrogène) avec test périodique de bascule automatique ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Schéma d'alimentation électrique, rapports de test de bascule",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-033",
+          "question": "Un stock tampon d'accumulateurs de froid pré-conditionnés est-il maintenu disponible pour répondre à un pic d'activité ou une urgence ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Mineur",
+          "preuves_attendues": "Procédure de gestion du stock d'accumulateurs, niveau de stock observé",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "13. Réception et Vérification à l'Arrivée",
+      "points_controle": [
+        {
+          "id": "FRO-034",
+          "question": "Une procédure impose-t-elle la lecture immédiate du data logger/indicateur de température dès réception d'un colis de la chaîne du froid, avant tout stockage ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Procédure de réception chaîne du froid, exemples de relevés lus à réception",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-035",
+          "question": "Le délai entre l'arrivée du colis au quai et son transfert effectif dans l'enceinte frigorifique est-il mesuré et limité par une consigne définie ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Majeur",
+          "preuves_attendues": "Procédure de réception, horodatage des opérations, mesure du délai",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "14. Validation et Requalification Périodique",
+      "points_controle": [
+        {
+          "id": "FRO-036",
+          "question": "Les enceintes et véhicules frigorifiques font-ils l'objet d'une requalification périodique (annuelle ou après modification significative) confirmant le maintien de leur performance ?",
+          "reference_reglementaire": "EU GMP Annex 15",
+          "criticite": "Majeur",
+          "preuves_attendues": "Planning de requalification, rapports de requalification",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-037",
+          "question": "Les emballages isothermes sont-ils revalidés en cas de changement de fournisseur, de composition ou de configuration ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Mineur",
+          "preuves_attendues": "Historique des revalidations d'emballages",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "15. Sensibilisation et Culture Qualité de la Chaîne du Froid",
+      "points_controle": [
+        {
+          "id": "FRO-038",
+          "question": "Des exercices de simulation de crise (panne prolongée, sinistre) sont-ils organisés périodiquement pour tester la réactivité des équipes de la chaîne du froid ?",
+          "reference_reglementaire": "ICH Q9",
+          "criticite": "Mineur",
+          "preuves_attendues": "Rapports d'exercices de simulation, enseignements tirés",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-039",
+          "question": "Un tableau de bord d'indicateurs chaîne du froid (nombre d'excursions, temps moyen de réaction, taux de disponibilité des équipements) est-il suivi et communiqué à la direction ?",
+          "reference_reglementaire": "ICH Q10",
+          "criticite": "Mineur",
+          "preuves_attendues": "Tableau de bord, comptes rendus de revue de direction",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FRO-040",
+          "question": "Les enseignements issus des excursions et incidents sont-ils partagés entre sites/équipes pour prévenir la récurrence à l'échelle de l'organisation ?",
+          "reference_reglementaire": "ICH Q10",
+          "criticite": "Mineur",
+          "preuves_attendues": "Comptes rendus de partage d'expérience, notes d'alerte inter-sites",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    }
+  ]
+}

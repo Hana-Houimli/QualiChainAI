@@ -1,0 +1,461 @@
+{
+  "type_audit": "Audit fournisseur pharmaceutique",
+  "description": "Checklist d'audit destinée à évaluer, dans le cadre d'une démarche de qualification et de suivi fournisseur, la conformité BPD/GDP d'un fournisseur de produits pharmaceutiques, matières premières, articles de conditionnement ou services critiques.",
+  "referentiel_reglementaire": [
+    "OMS - Bonnes Pratiques de Distribution (WHO TRS 957, Annex 5, 2010)",
+    "OMS - WHO TRS 961, Annex 9 - Model Guidance for Storage and Transport of Time- and Temperature-Sensitive Pharmaceutical Products (2013)",
+    "Lignes directrices UE 2013/C 343/01 relatives aux Bonnes Pratiques de Distribution en gros des médicaments à usage humain",
+    "Directive 2001/83/CE modifiée par la Directive 2011/62/UE (médicaments falsifiés)",
+    "Règlement délégué (UE) 2016/161 relatif aux dispositifs de sécurité",
+    "ICH Q9 - Gestion du risque qualité",
+    "ICH Q10 - Système qualité pharmaceutique",
+    "EU GMP Annex 15 - Qualification et Validation"
+  ],
+  "sections": [
+    {
+      "nom_section": "1. Système Qualité et Documentation",
+      "points_controle": [
+        {
+          "id": "FOU-001",
+          "question": "Le fournisseur dispose-t-il d'un système de management de la qualité certifié ou conforme aux référentiels applicables (BPD, BPF selon activité) ?",
+          "reference_reglementaire": "EU GDP Chapitre 1",
+          "criticite": "Critique",
+          "preuves_attendues": "Certificat qualité, manuel qualité, dernier certificat de bonnes pratiques",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-002",
+          "question": "Le fournisseur détient-il les autorisations réglementaires requises pour son activité (autorisation d'ouverture de fabricant/distributeur, licence de distribution en gros) ?",
+          "reference_reglementaire": "EU GDP Chapitre 5.2, Directive 2001/83/CE",
+          "criticite": "Critique",
+          "preuves_attendues": "Copie des autorisations/licences en cours de validité, vérification sur base de données officielle (ex. EudraGMDP)",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-003",
+          "question": "Les procédures qualité du fournisseur couvrant les processus fournis (fabrication, contrôle, stockage, expédition) sont-elles disponibles et à jour ?",
+          "reference_reglementaire": "EU GDP Chapitre 4",
+          "criticite": "Majeur",
+          "preuves_attendues": "Extraits de SOP, liste des procédures applicables",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-004",
+          "question": "Un contrat qualité (Quality Technical Agreement) est-il signé entre les parties, définissant précisément les responsabilités qualité respectives ?",
+          "reference_reglementaire": "EU GDP Chapitre 7.1, 7.2",
+          "criticite": "Critique",
+          "preuves_attendues": "Contrat qualité signé, revue périodique du contrat",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "2. Personnel et Organisation",
+      "points_controle": [
+        {
+          "id": "FOU-005",
+          "question": "Une Personne Responsable/pharmacien responsable est-elle identifiée chez le fournisseur avec autorité sur les décisions qualité ?",
+          "reference_reglementaire": "EU GDP Chapitre 2.2",
+          "criticite": "Majeur",
+          "preuves_attendues": "Organigramme, fiche de fonction de la personne responsable",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-006",
+          "question": "Le personnel clé impliqué dans la relation avec le donneur d'ordre bénéficie-t-il d'une formation BPD à jour ?",
+          "reference_reglementaire": "EU GDP Chapitre 2.3",
+          "criticite": "Mineur",
+          "preuves_attendues": "Plan de formation, attestations",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "3. Locaux, Équipements et Conditions de Stockage",
+      "points_controle": [
+        {
+          "id": "FOU-007",
+          "question": "Les locaux de production/stockage du fournisseur sont-ils adaptés à la nature des produits fournis (propreté, absence de contamination croisée, contrôle d'accès) ?",
+          "reference_reglementaire": "EU GDP Chapitre 3",
+          "criticite": "Majeur",
+          "preuves_attendues": "Visite des locaux, plan des installations",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-008",
+          "question": "Les conditions de stockage chez le fournisseur (température, humidité) sont-elles surveillées, cartographiées et conformes aux exigences des produits fournis ?",
+          "reference_reglementaire": "EU GDP Chapitre 3.2, WHO TRS 961",
+          "criticite": "Critique",
+          "preuves_attendues": "Cartographie thermique, relevés de température fournisseur",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-009",
+          "question": "Les équipements critiques utilisés par le fournisseur sont-ils qualifiés et maintenus selon un plan documenté ?",
+          "reference_reglementaire": "EU GMP Annex 15",
+          "criticite": "Majeur",
+          "preuves_attendues": "Dossiers de qualification, plan de maintenance",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "4. Maîtrise des Matières Premières et Composants",
+      "points_controle": [
+        {
+          "id": "FOU-010",
+          "question": "Le fournisseur applique-t-il une procédure de contrôle à réception de ses propres matières premières/composants, avec critères d'acceptation définis ?",
+          "reference_reglementaire": "EU GDP Chapitre 9.1",
+          "criticite": "Majeur",
+          "preuves_attendues": "Procédure de contrôle réception, spécifications matières",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-011",
+          "question": "Les certificats d'analyse (CoA) fournis avec chaque lot sont-ils cohérents avec les spécifications contractuelles et vérifiables ?",
+          "reference_reglementaire": "EU GDP Chapitre 5",
+          "criticite": "Majeur",
+          "preuves_attendues": "Exemples de CoA, procédure de vérification des CoA",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "5. Surveillance et Maîtrise de la Température (le cas échéant)",
+      "points_controle": [
+        {
+          "id": "FOU-012",
+          "question": "Pour les produits thermosensibles, le fournisseur applique-t-il un système de monitoring continu de température dans ses zones de stockage et lors de l'expédition ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9",
+          "criticite": "Critique",
+          "preuves_attendues": "Système de monitoring, relevés de température fournis",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-013",
+          "question": "Les instruments de mesure de température du fournisseur sont-ils étalonnés selon une fréquence documentée ?",
+          "reference_reglementaire": "EU GMP Annex 15",
+          "criticite": "Majeur",
+          "preuves_attendues": "Certificats d'étalonnage fournisseur",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "6. Gestion des Excursions de Température",
+      "points_controle": [
+        {
+          "id": "FOU-014",
+          "question": "Le fournisseur dispose-t-il d'une procédure de gestion des excursions de température et s'engage-t-il contractuellement à notifier le donneur d'ordre en cas d'incident ?",
+          "reference_reglementaire": "WHO TRS 961 Annex 9, contrat qualité",
+          "criticite": "Critique",
+          "preuves_attendues": "Procédure fournisseur, clause de notification dans le contrat qualité",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-015",
+          "question": "Un historique des excursions de température survenues chez le fournisseur au cours des 12 derniers mois est-il disponible et analysé ?",
+          "reference_reglementaire": "ICH Q9",
+          "criticite": "Majeur",
+          "preuves_attendues": "Registre des excursions fournisseur, analyse de tendance",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "7. Gestion des Écarts, Réclamations et CAPA",
+      "points_controle": [
+        {
+          "id": "FOU-016",
+          "question": "Le fournisseur dispose-t-il d'un système de gestion des non-conformités et communique-t-il au donneur d'ordre les écarts susceptibles d'affecter la qualité des produits livrés ?",
+          "reference_reglementaire": "ICH Q10, contrat qualité",
+          "criticite": "Critique",
+          "preuves_attendues": "Procédure de notification des écarts, exemples de communications",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-017",
+          "question": "Les réclamations émises par le donneur d'ordre envers le fournisseur sont-elles enregistrées, investiguées et closes dans des délais définis contractuellement ?",
+          "reference_reglementaire": "EU GDP Chapitre 6, contrat qualité",
+          "criticite": "Majeur",
+          "preuves_attendues": "Registre des réclamations, délais de traitement observés",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-018",
+          "question": "Un taux de service et un taux de non-conformité sont-ils suivis périodiquement dans le cadre de la relation fournisseur ?",
+          "reference_reglementaire": "ICH Q10",
+          "criticite": "Mineur",
+          "preuves_attendues": "Indicateurs de performance fournisseur (KPI), revues de performance",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "8. Gestion des Risques Qualité",
+      "points_controle": [
+        {
+          "id": "FOU-019",
+          "question": "Une évaluation de risque a-t-elle été réalisée avant qualification initiale du fournisseur (criticité du produit/service, historique, complexité de la chaîne d'approvisionnement) ?",
+          "reference_reglementaire": "ICH Q9",
+          "criticite": "Critique",
+          "preuves_attendues": "Grille d'évaluation de risque fournisseur, résultat de la classification",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-020",
+          "question": "Le niveau de criticité attribué au fournisseur détermine-t-il la fréquence de réévaluation/audit (annuelle, triennale, etc.) ?",
+          "reference_reglementaire": "ICH Q9, EU GDP Chapitre 7.3",
+          "criticite": "Majeur",
+          "preuves_attendues": "Politique de classification des fournisseurs, planning d'audit associé",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-021",
+          "question": "Les sous-traitants du fournisseur (4ème partie) sont-ils identifiés et évalués dans le cadre de la gestion du risque de la chaîne d'approvisionnement ?",
+          "reference_reglementaire": "ICH Q9, EU GDP Chapitre 7.3",
+          "criticite": "Majeur",
+          "preuves_attendues": "Cartographie de la chaîne d'approvisionnement, évaluation des sous-traitants",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "9. Traçabilité des Produits et des Lots",
+      "points_controle": [
+        {
+          "id": "FOU-022",
+          "question": "Le fournisseur peut-il fournir une traçabilité complète d'un lot depuis sa fabrication/réception jusqu'à son expédition vers le donneur d'ordre ?",
+          "reference_reglementaire": "EU GDP Chapitre 5",
+          "criticite": "Critique",
+          "preuves_attendues": "Test de traçabilité sur un lot, dossier de lot fournisseur",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-023",
+          "question": "Les numéros de lot et dates de péremption figurant sur les documents fournisseur sont-ils cohérents et exploitables dans le système d'information du donneur d'ordre ?",
+          "reference_reglementaire": "EU GDP Chapitre 4",
+          "criticite": "Mineur",
+          "preuves_attendues": "Exemples de documents de lot, format des identifiants",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "10. Gestion des Rappels Produits",
+      "points_controle": [
+        {
+          "id": "FOU-024",
+          "question": "Le fournisseur dispose-t-il d'une procédure de rappel et s'engage-t-il contractuellement à informer immédiatement le donneur d'ordre en cas de rappel affectant des lots livrés ?",
+          "reference_reglementaire": "EU GDP Chapitre 8, contrat qualité",
+          "criticite": "Critique",
+          "preuves_attendues": "Procédure de rappel fournisseur, clause contractuelle de notification",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-025",
+          "question": "Un test conjoint ou une revue de la procédure de rappel entre le fournisseur et le donneur d'ordre a-t-il été réalisé ?",
+          "reference_reglementaire": "EU GDP Chapitre 8.2",
+          "criticite": "Mineur",
+          "preuves_attendues": "Compte rendu de test conjoint ou de revue de procédure",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "11. Suivi et Réévaluation Continue du Fournisseur",
+      "points_controle": [
+        {
+          "id": "FOU-026",
+          "question": "Une réévaluation périodique du fournisseur (audit sur site, audit documentaire, questionnaire d'auto-évaluation) est-elle planifiée et réalisée selon la criticité définie ?",
+          "reference_reglementaire": "EU GDP Chapitre 7.3",
+          "criticite": "Majeur",
+          "preuves_attendues": "Planning d'audit fournisseur, rapports d'audit précédents",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-027",
+          "question": "Les statuts réglementaires du fournisseur (validité des autorisations, certificats, résultats d'inspections des autorités compétentes) sont-ils vérifiés périodiquement ?",
+          "reference_reglementaire": "EU GDP Chapitre 5.2",
+          "criticite": "Majeur",
+          "preuves_attendues": "Procédure de veille réglementaire, historique de vérification des licences",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-028",
+          "question": "En cas de non-conformité majeure ou récurrente, une procédure de sortie/déréférencement du fournisseur est-elle prévue ?",
+          "reference_reglementaire": "ICH Q10",
+          "criticite": "Mineur",
+          "preuves_attendues": "Procédure de déréférencement, critères de décision",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "12. Sécurité de la Chaîne d'Approvisionnement et Lutte Anti-Falsification",
+      "points_controle": [
+        {
+          "id": "FOU-029",
+          "question": "Le fournisseur applique-t-il des mesures de sécurisation contre l'introduction de médicaments falsifiés dans la chaîne d'approvisionnement (contrôle des dispositifs de sécurité, vérification des sources) ?",
+          "reference_reglementaire": "Directive 2011/62/UE, Règlement délégué (UE) 2016/161",
+          "criticite": "Critique",
+          "preuves_attendues": "Procédure anti-falsification du fournisseur, résultats de vérification des dispositifs de sécurité",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-030",
+          "question": "Le fournisseur informe-t-il sans délai le donneur d'ordre en cas de suspicion ou de confirmation de falsification concernant des produits livrés ?",
+          "reference_reglementaire": "Directive 2011/62/UE, contrat qualité",
+          "criticite": "Critique",
+          "preuves_attendues": "Clause contractuelle de notification, procédure de gestion des suspicions",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "13. Continuité d'Approvisionnement et Gestion des Ruptures",
+      "points_controle": [
+        {
+          "id": "FOU-031",
+          "question": "Le fournisseur informe-t-il le donneur d'ordre en amont en cas de risque de rupture d'approvisionnement ou d'arrêt de production ?",
+          "reference_reglementaire": "EU GDP Chapitre 7, contrat qualité",
+          "criticite": "Majeur",
+          "preuves_attendues": "Clause de notification anticipée, historique des alertes de rupture",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-032",
+          "question": "Un plan de continuité d'activité (sites de production alternatifs, stocks de sécurité) est-il documenté chez le fournisseur pour les produits critiques ?",
+          "reference_reglementaire": "ICH Q9",
+          "criticite": "Mineur",
+          "preuves_attendues": "Plan de continuité fournisseur, preuve de sites alternatifs qualifiés",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "14. Conditions Contractuelles et Confidentialité",
+      "points_controle": [
+        {
+          "id": "FOU-033",
+          "question": "Le contrat commercial et/ou qualité intègre-t-il des clauses relatives à la protection des données et à la confidentialité des informations échangées ?",
+          "reference_reglementaire": "EU GDP Chapitre 7.1",
+          "criticite": "Mineur",
+          "preuves_attendues": "Contrat, clause de confidentialité",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-034",
+          "question": "Les modalités de modification des spécifications produit ou des procédés par le fournisseur (change control) prévoient-elles une notification et une approbation préalable du donneur d'ordre ?",
+          "reference_reglementaire": "ICH Q10, EU GDP Chapitre 7",
+          "criticite": "Majeur",
+          "preuves_attendues": "Procédure de gestion des changements (change control), exemples de notifications",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "15. Emballage, Étiquetage et Expédition",
+      "points_controle": [
+        {
+          "id": "FOU-035",
+          "question": "Les articles de conditionnement/étiquetage fournis respectent-ils les spécifications validées (lisibilité, langue, dispositifs de sécurité) ?",
+          "reference_reglementaire": "EU GDP Chapitre 5",
+          "criticite": "Majeur",
+          "preuves_attendues": "Spécifications de conditionnement, contrôle qualité à réception",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-036",
+          "question": "Les modalités d'expédition du fournisseur (emballage, protection, conditions de transport) sont-elles conformes aux exigences convenues, notamment pour les produits sensibles ?",
+          "reference_reglementaire": "EU GDP Chapitre 9",
+          "criticite": "Majeur",
+          "preuves_attendues": "Spécifications d'expédition, contrôle à réception des envois",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "16. Performance Globale et Revue de Partenariat",
+      "points_controle": [
+        {
+          "id": "FOU-037",
+          "question": "Une revue de partenariat/business review périodique est-elle organisée entre le donneur d'ordre et le fournisseur pour aborder les sujets qualité, délais et amélioration continue ?",
+          "reference_reglementaire": "ICH Q10",
+          "criticite": "Mineur",
+          "preuves_attendues": "Comptes rendus de revue de partenariat",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-038",
+          "question": "Le fournisseur dispose-t-il d'un point de contact qualité dédié, joignable en cas d'urgence (excursion, rappel, réclamation critique) ?",
+          "reference_reglementaire": "EU GDP Chapitre 7",
+          "criticite": "Mineur",
+          "preuves_attendues": "Coordonnées du contact qualité, procédure d'escalade",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    },
+    {
+      "nom_section": "17. Audit et Droit de Regard",
+      "points_controle": [
+        {
+          "id": "FOU-039",
+          "question": "Le contrat prévoit-il explicitement un droit d'audit du donneur d'ordre chez le fournisseur, avec des modalités d'accès et de préavis définies ?",
+          "reference_reglementaire": "EU GDP Chapitre 7.1",
+          "criticite": "Majeur",
+          "preuves_attendues": "Clause contractuelle de droit d'audit",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        },
+        {
+          "id": "FOU-040",
+          "question": "Les constats et plans d'action issus du dernier audit fournisseur ont-ils été communiqués, acceptés et suivis jusqu'à leur clôture ?",
+          "reference_reglementaire": "EU GDP Chapitre 7.3",
+          "criticite": "Majeur",
+          "preuves_attendues": "Rapport d'audit précédent, plan d'action, preuves de clôture",
+          "statut_conformite": "",
+          "commentaires_auditeur": ""
+        }
+      ]
+    }
+  ]
+}

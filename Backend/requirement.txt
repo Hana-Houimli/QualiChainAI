@@ -13,3 +13,5 @@ pymupdf
 numpy
 pydantic
 torch
+fastapi
+uvicorn
