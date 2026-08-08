@@ -1,58 +1,89 @@
-
 from pymongo import MongoClient
-from langchain_core.tools import tool
+from langchain.tools import tool
 
 
-# Connexion MongoDB
-client = MongoClient(
-    "mongodb://localhost:27017"
-)
+client = MongoClient("mongodb://localhost:27017/")
 
 db = client["qualichainAI"]
 
-checklist_collection = db["audit_checklists"]
-
 
 @tool
-def checklist_search(audit_type: str):
+def get_audit_history(
+    type_audit: str,
+    site_audite: str
+):
     """
-    Recherche une checklist d'audit dans MongoDB selon le type d'audit.
+    Récupère l'historique d'audit nécessaire à la génération
+    d'une nouvelle checklist.
+    Args:
+
+        type_audit:
+            Type EXACT d'audit mentionné par l'utilisateur.
+            Ne jamais reformuler.
+            Utiliser null si absent.
+
+        site_audite:
+            Nom EXACT du site mentionné par l'utilisateur.
+            Ne jamais inventer.
+            Utiliser null si absent.
+
+
+    Retourne :
+    - les écarts du dernier audit ;
+    - les CAPA associées.
+
+    Ces informations servent uniquement de contexte
+    pour personnaliser la checklist selon l'historique qualité.
     """
 
-    checklist = checklist_collection.find_one(
+
+    # 2 - Dernier audit réalisé
+    previous_audit = db.audit_reports.find_one(
+    {
+        "type_audit": {
+            "$regex": type_audit,
+            "$options": "i"
+        },
+        "entete.site_audite": {
+            "$regex": site_audite,
+            "$options": "i"
+        }
+    },
+    {
+        "_id": 0,
+        "reference_rapport": 1,
+        "constats_detailles": 1
+    },
+    sort=[("entete.date_audit", -1)]
+)
+
+    capa = None
+
+    if previous_audit:
+
+        capa = db.CAPA_reports.find_one(
         {
-            "type_audit": {
-                "$regex": audit_type,
-                "$options": "i"
-            }
+            "reference_audit_associe":
+            previous_audit["reference_rapport"]
+        },
+        {
+            "_id":0,
+            "actions_correctives.id":1,
+            "actions_correctives.criticite":1,
+            "actions_correctives.ecart_constate":1,
+            "actions_correctives.action_corrective":1,
+            "actions_correctives.action_preventive":1,
+            "actions_correctives.statut_action":1
         }
     )
 
-    if checklist:
-
-        questions = []
-
-        for section in checklist.get("sections", []):
-
-            nom_section = section.get("nom_section", "")
-
-            for point in section.get("points_controle", []):
-
-                questions.append({
-                    "question": point.get("question", ""),
-                    "criticite": point.get("criticite", "")
-                })
-
-        return {
-            "success": True,
-            "checklist": {
-                "type_audit": checklist["type_audit"],
-                "questions": questions
-                }
-            }
-
 
     return {
-        "success": False,
-        "message": f"Aucune checklist trouvée pour le type d'audit: {audit_type}"
-    }
+    
+    "previous_findings": (
+        previous_audit.get("constats_detailles") if previous_audit else []
+    ),
+    "actions_correctives": (
+        capa.get("actions_correctives") if capa else []
+    ),
+}

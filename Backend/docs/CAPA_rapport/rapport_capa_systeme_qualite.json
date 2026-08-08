@@ -1,0 +1,81 @@
+{
+  "type_document": "Rapport CAPA",
+  "type_audit_associe": "Audit système qualité",
+  "reference_rapport_capa": "QCA-AUD-2026-SYQ-027-CAPA",
+  "reference_audit_associe": "QCA-AUD-2026-SYQ-027",
+  "entete": {
+    "entreprise_auditee": "PharmaLog Distribution SA",
+    "site_audite": "Siège social — PharmaLog Distribution SA, Tunis",
+    "date_audit_source": "27/07/2026",
+    "pilote_plan_actions": "Responsable Assurance Qualité Groupe",
+    "nombre_actions_correctives": 4
+  },
+  "objet_document": "Plan d'actions correctives et préventives (CAPA) consécutif à l'audit BPD/GDP « Audit système qualité » réalisé le 27/07/2026 (rapport d'audit référence QCA-AUD-2026-SYQ-027).",
+  "repartition_par_criticite": {
+    "critique": 0,
+    "majeur": 4,
+    "mineur": 0
+  },
+  "actions_correctives": [
+    {
+      "id": "SYQ-006",
+      "criticite": "Majeur",
+      "ecart_constate": "La procédure de maîtrise documentaire est appliquée mais un audit de 20 documents tirés au sort a révélé 3 documents diffusés en version non approuvée (visa manquant du pharmacien responsable).",
+      "action_corrective": "Corriger immédiatement les 3 documents concernés et renforcer le contrôle qualité avant diffusion (double vérification systématique).",
+      "action_preventive": "Renforcer durablement le contrôle qualité avant diffusion documentaire (double vérification systématique) sur l'ensemble du périmètre du siège.",
+      "responsable": "Responsable Système Qualité",
+      "echeance": "26/08/2026",
+      "statut_action": "Ouverte",
+      "verification_efficacite": {
+        "date": "",
+        "valide_par": "",
+        "statut_final": ""
+      }
+    },
+    {
+      "id": "SYQ-015",
+      "criticite": "Majeur",
+      "ecart_constate": "Sur un échantillon de 15 CAPA clôturées au cours des 12 derniers mois, 5 (33 %) ne comportaient aucune preuve documentée de vérification d'efficacité.",
+      "action_corrective": "Revoir les 5 CAPA concernées et vérifier a posteriori leur efficacité ; renforcer l'exigence de preuve de vérification dans le processus CAPA.",
+      "action_preventive": "Intégrer une exigence systématique de preuve de vérification d'efficacité dans le processus CAPA, avec contrôle qualité obligatoire avant toute clôture.",
+      "responsable": "Responsable Système Qualité",
+      "echeance": "26/08/2026",
+      "statut_action": "Ouverte",
+      "verification_efficacite": {
+        "date": "",
+        "valide_par": "",
+        "statut_final": ""
+      }
+    },
+    {
+      "id": "SYQ-022",
+      "criticite": "Majeur",
+      "ecart_constate": "Le plan d'action de l'auto-inspection 2025 est réalisé à 70 % ; 6 actions sur 20 restent ouvertes au-delà de leur échéance initiale.",
+      "action_corrective": "Actualiser les échéances des 6 actions en retard et présenter un état d'avancement mensuel à la direction jusqu'à clôture complète.",
+      "action_preventive": "Mettre en place un tableau de bord de suivi des plans d'action d'auto-inspection avec revue mensuelle par la direction jusqu'à clôture complète des actions.",
+      "responsable": "Responsable Système Qualité",
+      "echeance": "26/08/2026",
+      "statut_action": "Ouverte",
+      "verification_efficacite": {
+        "date": "",
+        "valide_par": "",
+        "statut_final": ""
+      }
+    },
+    {
+      "id": "SYQ-034",
+      "criticite": "Majeur",
+      "ecart_constate": "Aucune revue périodique des droits d'accès au système de gestion documentaire électronique n'a été réalisée depuis sa mise en service il y a plus de 2 ans ; 4 comptes d'anciens collaborateurs sont toujours actifs.",
+      "action_corrective": "Réaliser une revue complète des accès, désactiver les comptes obsolètes et mettre en place une revue semestrielle formalisée.",
+      "action_preventive": "Instaurer une revue semestrielle systématique des droits d'accès à l'ensemble des systèmes qualité critiques, avec désactivation automatique des comptes inactifs.",
+      "responsable": "Responsable Système d'Information / Qualité",
+      "echeance": "26/08/2026",
+      "statut_action": "Ouverte",
+      "verification_efficacite": {
+        "date": "",
+        "valide_par": "",
+        "statut_final": ""
+      }
+    }
+  ]
+}

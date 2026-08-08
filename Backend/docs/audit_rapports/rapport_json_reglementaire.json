@@ -1,0 +1,226 @@
+{
+  "type_audit": "Audit conformité réglementaire",
+  "reference_rapport": "QCA-AUD-2026-REG-029",
+  "entete": {
+    "entreprise_auditee": "PharmaLog Distribution SA",
+    "site_audite": "Siège social — Direction Affaires Réglementaires, Tunis",
+    "date_audit": "29/07/2026",
+    "type_audit_ligne": "Audit BPD/GDP — Audit conformité réglementaire",
+    "perimetre": "autorisations et licences, obligations déclaratives, sérialisation, stupéfiants, RGPD et veille réglementaire",
+    "auditeurs": "Auditrice Qualité Senior, QualiChain AI",
+    "interlocuteurs_site": "Responsable Affaires Réglementaires",
+    "nombre_points_controle": 40,
+    "nombre_sections": 20
+  },
+  "contexte_et_methodologie": "Audit réalisé le 29/07/2026 au sein de Siège social — Direction Affaires Réglementaires, Tunis, dans le cadre du programme d'audit BPD/GDP de PharmaLog Distribution SA. Méthodologie : revue documentaire, observation terrain, entretiens et échantillonnage d'enregistrements qualité, sur la base de 40 points de contrôle répartis en 20 sections.",
+  "resume_executif": {
+    "texte": "Cet audit a été réalisé le 29/07/2026 au sein de Siège social — Direction Affaires Réglementaires, Tunis, dans le cadre du programme d'audit BPD/GDP de PharmaLog Distribution SA. Il a couvert 40 points de contrôle répartis sur 20 sections, portant sur : autorisations et licences, obligations déclaratives, sérialisation, stupéfiants, RGPD et veille réglementaire. 35 points ont été jugés conformes, 2 partiellement conformes, 2 non conformes et 1 non applicables.",
+    "repartition_statuts": {
+      "conforme": 35,
+      "partiellement_conforme": 2,
+      "non_conforme": 2,
+      "non_applicable": 1
+    },
+    "total_points_applicables": 39,
+    "taux_conformite_global_pct": 92.3,
+    "note_globale": "Satisfaisant"
+  },
+  "constats_detailles": [
+    {
+      "id": "REG-020",
+      "criticite": "Critique",
+      "ecart_constate": "Le registre des achats/ventes d'un fournisseur (PharmaChem Ingredients Ltd.) présente des lacunes sur la période janvier-mars 2026 : numéros de lot manquants pour 8 transactions."
+    },
+    {
+      "id": "REG-027",
+      "criticite": "Critique",
+      "ecart_constate": "Le rapprochement mensuel obligatoire entre stock physique et registre comptable des stupéfiants n'a pas été réalisé pour la période de mai 2026 (retard de 2 mois constaté au jour de l'audit)."
+    },
+    {
+      "id": "REG-006",
+      "criticite": "Majeur",
+      "ecart_constate": "La durée de conservation réglementaire de 5 ans est respectée pour les documents papier, mais les enregistrements électroniques de température antérieurs à 2023 ne sont conservés que sur une durée de 3 ans dans le système actuel."
+    },
+    {
+      "id": "REG-035",
+      "criticite": "Majeur",
+      "ecart_constate": "Une veille réglementaire est réalisée mais de manière informelle (abonnements newsletters sans procédure documentée ni traçabilité des évolutions traitées)."
+    }
+  ],
+  "annexe_recapitulatif_par_section": [
+    {
+      "section": "1. Autorisations, Licences et Statut Réglementaire",
+      "points": 4,
+      "conformes": 4,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "2. Vérification Documentaire et Enregistrements Réglementaires",
+      "points": 3,
+      "conformes": 2,
+      "partiels": 1,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "3. Personnel Réglementaire et Responsabilités Légales",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "4. Locaux, Équipements et Conformité aux Normes Applicables",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "5. Contrôle des Conditions de Stockage et Conformité aux RCP",
+      "points": 1,
+      "conformes": 1,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "6. Surveillance et Maîtrise de la Température",
+      "points": 1,
+      "conformes": 1,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "7. Gestion des Excursions de Température",
+      "points": 1,
+      "conformes": 1,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "8. Gestion des Écarts et CAPA en Contexte Réglementaire",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "9. Gestion des Risques Réglementaires",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "10. Traçabilité et Sérialisation",
+      "points": 3,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 1,
+      "non_applicable": 0
+    },
+    {
+      "section": "11. Gestion des Rappels Produits et Obligations Déclaratives",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "12. Gestion des Fournisseurs et Conformité de la Chaîne d'Approvisionnement",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "13. Gestion des Substances Contrôlées (Stupéfiants et Psychotropes)",
+      "points": 2,
+      "conformes": 1,
+      "partiels": 0,
+      "non_conformes": 1,
+      "non_applicable": 0
+    },
+    {
+      "section": "14. Protection des Données et Confidentialité",
+      "points": 2,
+      "conformes": 1,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 1
+    },
+    {
+      "section": "15. Pharmacovigilance et Signalement des Effets Indésirables",
+      "points": 1,
+      "conformes": 1,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "16. Import/Export et Réglementation Douanière",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "17. Relations avec les Autorités Compétentes",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "18. Veille Réglementaire et Mise à Jour du Dispositif de Conformité",
+      "points": 2,
+      "conformes": 1,
+      "partiels": 1,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "19. Sanctions, Litiges et Historique de Conformité",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "20. Formation à la Réglementation et Sensibilisation",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    }
+  ],
+  "conclusion": "L'audit démontre un niveau de maîtrise satisfaisant des exigences BPD/GDP applicables. Les quelques écarts mineurs ou majeurs identifiés font l'objet d'un plan d'actions correctives dont l'efficacité sera vérifiée lors du prochain audit de suivi. Le plan d'actions correctives détaillé (CAPA) fait l'objet d'un document séparé (référence QCA-AUD-2026-REG-029-CAPA).",
+  "reference_rapport_capa_associe": "QCA-AUD-2026-REG-029-CAPA",
+  "signatures": {
+    "auditeur": {
+      "nom": "Auditrice Qualité Senior, QualiChain AI",
+      "date": "29/07/2026",
+      "signature": ""
+    },
+    "representant_site": {
+      "nom": "Responsable Affaires Réglementaires",
+      "date": "29/07/2026",
+      "signature": ""
+    }
+  }
+}

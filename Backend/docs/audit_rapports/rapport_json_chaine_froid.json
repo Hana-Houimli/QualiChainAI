@@ -1,0 +1,191 @@
+{
+  "type_audit": "Audit chaîne du froid pharmaceutique",
+  "reference_rapport": "QCA-AUD-2026-FRO-020",
+  "entete": {
+    "entreprise_auditee": "PharmaLog Distribution SA",
+    "site_audite": "Unité chaîne du froid — Bâtiment B, Entrepôt central de Mghira",
+    "date_audit": "20/07/2026",
+    "type_audit_ligne": "Audit BPD/GDP — Audit chaîne du froid pharmaceutique",
+    "perimetre": "stockage à température dirigée (2-8°C, -20°C, -70°C), emballages isothermes et monitoring continu",
+    "auditeurs": "Auditeurs BPD, QualiChain AI",
+    "interlocuteurs_site": "Responsable Chaîne du Froid",
+    "nombre_points_controle": 40,
+    "nombre_sections": 15
+  },
+  "contexte_et_methodologie": "Audit réalisé le 20/07/2026 au sein de Unité chaîne du froid — Bâtiment B, Entrepôt central de Mghira, dans le cadre du programme d'audit BPD/GDP de PharmaLog Distribution SA. Méthodologie : revue documentaire, observation terrain, entretiens et échantillonnage d'enregistrements qualité, sur la base de 40 points de contrôle répartis en 15 sections.",
+  "resume_executif": {
+    "texte": "Cet audit a été réalisé le 20/07/2026 au sein de Unité chaîne du froid — Bâtiment B, Entrepôt central de Mghira, dans le cadre du programme d'audit BPD/GDP de PharmaLog Distribution SA. Il a couvert 40 points de contrôle répartis sur 15 sections, portant sur : stockage à température dirigée (2-8°C, -20°C, -70°C), emballages isothermes et monitoring continu. 34 points ont été jugés conformes, 3 partiellement conformes, 2 non conformes et 1 non applicables.",
+    "repartition_statuts": {
+      "conforme": 34,
+      "partiellement_conforme": 3,
+      "non_conforme": 2,
+      "non_applicable": 1
+    },
+    "total_points_applicables": 39,
+    "taux_conformite_global_pct": 91.0,
+    "note_globale": "Satisfaisant"
+  },
+  "constats_detailles": [
+    {
+      "id": "FRO-008",
+      "criticite": "Critique",
+      "ecart_constate": "Les chambres froides principales disposent d'une redondance de production de froid, mais l'ultra-congélateur (-70°C) du bâtiment B ne dispose d'aucun équipement de secours en cas de panne."
+    },
+    {
+      "id": "FRO-013",
+      "criticite": "Critique",
+      "ecart_constate": "Le système d'alarme déportée de la chambre froide n°2 n'a pas déclenché lors du test simulé réalisé pendant l'audit ; seule l'alarme locale a fonctionné."
+    },
+    {
+      "id": "FRO-018",
+      "criticite": "Majeur",
+      "ecart_constate": "Le délai moyen entre déclenchement d'alarme et prise de décision est de 47 minutes sur l'échantillon revu, supérieur à l'objectif interne de 30 minutes, notamment en horaires de nuit."
+    },
+    {
+      "id": "FRO-021",
+      "criticite": "Majeur",
+      "ecart_constate": "Procédure de conditionnement disponible mais absence de check-list normalisée pour la préparation des colis isothermes ; variabilité observée entre 2 opérateurs lors de l'audit."
+    },
+    {
+      "id": "FRO-036",
+      "criticite": "Majeur",
+      "ecart_constate": "La requalification annuelle de la chambre froide n°1 n'a pas été réalisée depuis 19 mois (dernière requalification : décembre 2024)."
+    }
+  ],
+  "annexe_recapitulatif_par_section": [
+    {
+      "section": "1. Système Qualité et Documentation",
+      "points": 3,
+      "conformes": 3,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "2. Personnel et Formation",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "3. Équipements de Stockage à Température Dirigée",
+      "points": 5,
+      "conformes": 4,
+      "partiels": 1,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "4. Surveillance et Monitoring Continu de la Température",
+      "points": 5,
+      "conformes": 4,
+      "partiels": 0,
+      "non_conformes": 1,
+      "non_applicable": 0
+    },
+    {
+      "section": "5. Gestion des Excursions de Température",
+      "points": 4,
+      "conformes": 3,
+      "partiels": 1,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "6. Emballages Isothermes et Transport de la Chaîne du Froid",
+      "points": 3,
+      "conformes": 2,
+      "partiels": 1,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "7. Gestion des Écarts et CAPA",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "8. Gestion des Risques Qualité",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "9. Traçabilité des Produits et des Lots",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "10. Gestion des Rappels Produits",
+      "points": 1,
+      "conformes": 1,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "11. Gestion des Fournisseurs et Prestataires de la Chaîne du Froid",
+      "points": 2,
+      "conformes": 1,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 1
+    },
+    {
+      "section": "12. Gestion Énergétique et Continuité",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "13. Réception et Vérification à l'Arrivée",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "14. Validation et Requalification Périodique",
+      "points": 2,
+      "conformes": 1,
+      "partiels": 0,
+      "non_conformes": 1,
+      "non_applicable": 0
+    },
+    {
+      "section": "15. Sensibilisation et Culture Qualité de la Chaîne du Froid",
+      "points": 3,
+      "conformes": 3,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    }
+  ],
+  "conclusion": "L'audit démontre un niveau de maîtrise satisfaisant des exigences BPD/GDP applicables. Les quelques écarts mineurs ou majeurs identifiés font l'objet d'un plan d'actions correctives dont l'efficacité sera vérifiée lors du prochain audit de suivi. Le plan d'actions correctives détaillé (CAPA) fait l'objet d'un document séparé (référence QCA-AUD-2026-FRO-020-CAPA).",
+  "reference_rapport_capa_associe": "QCA-AUD-2026-FRO-020-CAPA",
+  "signatures": {
+    "auditeur": {
+      "nom": "Auditeurs BPD, QualiChain AI",
+      "date": "20/07/2026",
+      "signature": ""
+    },
+    "representant_site": {
+      "nom": "Responsable Chaîne du Froid",
+      "date": "20/07/2026",
+      "signature": ""
+    }
+  }
+}

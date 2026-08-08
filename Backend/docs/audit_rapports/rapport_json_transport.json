@@ -1,0 +1,175 @@
+{
+  "type_audit": "Audit transport pharmaceutique",
+  "reference_rapport": "QCA-AUD-2026-TRA-016",
+  "entete": {
+    "entreprise_auditee": "PharmaLog Distribution SA",
+    "site_audite": "Plateforme transport — Dépôt logistique Tunis-Ariana",
+    "date_audit": "16/07/2026",
+    "type_audit_ligne": "Audit BPD/GDP — Audit transport pharmaceutique",
+    "perimetre": "opérations de transport routier, gestion de la flotte frigorifique et sous-traitance transport",
+    "auditeurs": "Auditrice Qualité Senior, QualiChain AI",
+    "interlocuteurs_site": "Responsable Transport & Flotte",
+    "nombre_points_controle": 40,
+    "nombre_sections": 13
+  },
+  "contexte_et_methodologie": "Audit réalisé le 16/07/2026 au sein de Plateforme transport — Dépôt logistique Tunis-Ariana, dans le cadre du programme d'audit BPD/GDP de PharmaLog Distribution SA. Méthodologie : revue documentaire, observation terrain, entretiens et échantillonnage d'enregistrements qualité, sur la base de 40 points de contrôle répartis en 13 sections.",
+  "resume_executif": {
+    "texte": "Cet audit a été réalisé le 16/07/2026 au sein de Plateforme transport — Dépôt logistique Tunis-Ariana, dans le cadre du programme d'audit BPD/GDP de PharmaLog Distribution SA. Il a couvert 40 points de contrôle répartis sur 13 sections, portant sur : opérations de transport routier, gestion de la flotte frigorifique et sous-traitance transport. 34 points ont été jugés conformes, 3 partiellement conformes, 2 non conformes et 1 non applicables.",
+    "repartition_statuts": {
+      "conforme": 34,
+      "partiellement_conforme": 3,
+      "non_conforme": 2,
+      "non_applicable": 1
+    },
+    "total_points_applicables": 39,
+    "taux_conformite_global_pct": 91.0,
+    "note_globale": "Satisfaisant"
+  },
+  "constats_detailles": [
+    {
+      "id": "TRA-009",
+      "criticite": "Critique",
+      "ecart_constate": "Cartographie thermique en charge réalisée sur 2 véhicules frigorifiques sur 5 ; campagne de qualification en cours pour les 3 véhicules restants, sans échéance formalisée."
+    },
+    {
+      "id": "TRA-017",
+      "criticite": "Critique",
+      "ecart_constate": "6 data loggers sur 22 en service ne disposent pas de certificat d'étalonnage valide (dépassement de 2 à 5 mois selon les unités)."
+    },
+    {
+      "id": "TRA-021",
+      "criticite": "Critique",
+      "ecart_constate": "Les investigations d'excursion sont réalisées mais le délai moyen de clôture observé sur les 6 derniers mois est de 18 jours, contre un objectif interne de 5 jours."
+    },
+    {
+      "id": "TRA-029",
+      "criticite": "Critique",
+      "ecart_constate": "Scellés inviolables utilisés pour les expéditions de stupéfiants mais absence de procédure formalisée de vérification systématique du numéro de scellé à réception."
+    },
+    {
+      "id": "TRA-032",
+      "criticite": "Critique",
+      "ecart_constate": "Le sous-traitant assurant les livraisons de dernier kilomètre sur la région du Sud n'a fait l'objet d'aucune qualification ni audit documentaire depuis le début de la collaboration (18 mois)."
+    }
+  ],
+  "annexe_recapitulatif_par_section": [
+    {
+      "section": "1. Système Qualité et Documentation",
+      "points": 4,
+      "conformes": 4,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "2. Personnel et Formation",
+      "points": 3,
+      "conformes": 3,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "3. Véhicules et Équipements de Transport",
+      "points": 4,
+      "conformes": 3,
+      "partiels": 1,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "4. Conditions de Transport et Chargement",
+      "points": 4,
+      "conformes": 4,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "5. Surveillance et Maîtrise de la Température",
+      "points": 4,
+      "conformes": 3,
+      "partiels": 0,
+      "non_conformes": 1,
+      "non_applicable": 0
+    },
+    {
+      "section": "6. Gestion des Excursions de Température",
+      "points": 3,
+      "conformes": 2,
+      "partiels": 1,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "7. Gestion des Écarts et CAPA",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "8. Gestion des Risques Qualité",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "9. Traçabilité et Sécurité des Expéditions",
+      "points": 3,
+      "conformes": 2,
+      "partiels": 1,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "10. Gestion des Rappels et Incidents Critiques",
+      "points": 2,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "11. Gestion des Sous-traitants Transport",
+      "points": 3,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 1,
+      "non_applicable": 0
+    },
+    {
+      "section": "12. Livraison et Preuve de Conformité",
+      "points": 3,
+      "conformes": 3,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 0
+    },
+    {
+      "section": "13. Réglementation Spécifique et Douanes",
+      "points": 3,
+      "conformes": 2,
+      "partiels": 0,
+      "non_conformes": 0,
+      "non_applicable": 1
+    }
+  ],
+  "conclusion": "L'audit démontre un niveau de maîtrise satisfaisant des exigences BPD/GDP applicables. Les quelques écarts mineurs ou majeurs identifiés font l'objet d'un plan d'actions correctives dont l'efficacité sera vérifiée lors du prochain audit de suivi. Le plan d'actions correctives détaillé (CAPA) fait l'objet d'un document séparé (référence QCA-AUD-2026-TRA-016-CAPA).",
+  "reference_rapport_capa_associe": "QCA-AUD-2026-TRA-016-CAPA",
+  "signatures": {
+    "auditeur": {
+      "nom": "Auditrice Qualité Senior, QualiChain AI",
+      "date": "16/07/2026",
+      "signature": ""
+    },
+    "representant_site": {
+      "nom": "Responsable Transport & Flotte",
+      "date": "16/07/2026",
+      "signature": ""
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "type_document": "Rapport CAPA",
+  "type_audit_associe": "Audit transport pharmaceutique",
+  "reference_rapport_capa": "QCA-AUD-2026-TRA-016-CAPA",
+  "reference_audit_associe": "QCA-AUD-2026-TRA-016",
+  "entete": {
+    "entreprise_auditee": "PharmaLog Distribution SA",
+    "site_audite": "Plateforme transport — Dépôt logistique Tunis-Ariana",
+    "date_audit_source": "16/07/2026",
+    "pilote_plan_actions": "Responsable Transport & Flotte",
+    "nombre_actions_correctives": 5
+  },
+  "objet_document": "Plan d'actions correctives et préventives (CAPA) consécutif à l'audit BPD/GDP « Audit transport pharmaceutique » réalisé le 16/07/2026 (rapport d'audit référence QCA-AUD-2026-TRA-016).",
+  "repartition_par_criticite": {
+    "critique": 5,
+    "majeur": 0,
+    "mineur": 0
+  },
+  "actions_correctives": [
+    {
+      "id": "TRA-009",
+      "criticite": "Critique",
+      "ecart_constate": "Cartographie thermique en charge réalisée sur 2 véhicules frigorifiques sur 5 ; campagne de qualification en cours pour les 3 véhicules restants, sans échéance formalisée.",
+      "action_corrective": "Finaliser la cartographie thermique des 3 véhicules restants et formaliser une échéance dans le plan de qualification annuel.",
+      "action_preventive": "Intégrer la qualification thermique de l'ensemble de la flotte dans le plan annuel de qualification, avec échéances contractuelles et suivi mensuel d'avancement.",
+      "responsable": "Responsable Qualité Transport",
+      "echeance": "31/07/2026",
+      "statut_action": "Ouverte",
+      "verification_efficacite": {
+        "date": "",
+        "valide_par": "",
+        "statut_final": ""
+      }
+    },
+    {
+      "id": "TRA-017",
+      "criticite": "Critique",
+      "ecart_constate": "6 data loggers sur 22 en service ne disposent pas de certificat d'étalonnage valide (dépassement de 2 à 5 mois selon les unités).",
+      "action_corrective": "Retirer immédiatement du service les 6 data loggers concernés, les faire réétalonner et mettre en place un suivi métrologique automatisé.",
+      "action_preventive": "Déployer un système de gestion des étalonnages avec alertes automatiques pour l'ensemble des data loggers en service, incluant retrait automatique des unités non conformes.",
+      "responsable": "Responsable Métrologie / Flotte",
+      "echeance": "31/07/2026",
+      "statut_action": "Ouverte",
+      "verification_efficacite": {
+        "date": "",
+        "valide_par": "",
+        "statut_final": ""
+      }
+    },
+    {
+      "id": "TRA-021",
+      "criticite": "Critique",
+      "ecart_constate": "Les investigations d'excursion sont réalisées mais le délai moyen de clôture observé sur les 6 derniers mois est de 18 jours, contre un objectif interne de 5 jours.",
+      "action_corrective": "Analyser les causes du retard de traitement, renforcer les ressources dédiées aux investigations et fixer un point d'avancement hebdomadaire.",
+      "action_preventive": "Renforcer durablement les ressources dédiées aux investigations d'excursions et instaurer un suivi hebdomadaire des délais de clôture avec seuil d'alerte.",
+      "responsable": "Responsable Qualité Transport",
+      "echeance": "31/07/2026",
+      "statut_action": "Ouverte",
+      "verification_efficacite": {
+        "date": "",
+        "valide_par": "",
+        "statut_final": ""
+      }
+    },
+    {
+      "id": "TRA-029",
+      "criticite": "Critique",
+      "ecart_constate": "Scellés inviolables utilisés pour les expéditions de stupéfiants mais absence de procédure formalisée de vérification systématique du numéro de scellé à réception.",
+      "action_corrective": "Formaliser une procédure de vérification des scellés à réception avec enregistrement systématique et formation des équipes réception.",
+      "action_preventive": "Former systématiquement les équipes de réception à la procédure de vérification des scellés et intégrer ce contrôle au programme d'audit interne annuel.",
+      "responsable": "Responsable Sécurité / Qualité",
+      "echeance": "31/07/2026",
+      "statut_action": "Ouverte",
+      "verification_efficacite": {
+        "date": "",
+        "valide_par": "",
+        "statut_final": ""
+      }
+    },
+    {
+      "id": "TRA-032",
+      "criticite": "Critique",
+      "ecart_constate": "Le sous-traitant assurant les livraisons de dernier kilomètre sur la région du Sud n'a fait l'objet d'aucune qualification ni audit documentaire depuis le début de la collaboration (18 mois).",
+      "action_corrective": "Suspendre les nouvelles attributions à ce sous-traitant jusqu'à réalisation d'un audit documentaire complet et signature d'un accord qualité.",
+      "action_preventive": "Intégrer une étape obligatoire de qualification et d'audit documentaire de tout nouveau sous-traitant transport dans le processus achats, avant toute attribution de mission.",
+      "responsable": "Responsable Achats / Qualité Transport",
+      "echeance": "31/07/2026",
+      "statut_action": "Ouverte",
+      "verification_efficacite": {
+        "date": "",
+        "valide_par": "",
+        "statut_final": ""
+      }
+    }
+  ]
+}
