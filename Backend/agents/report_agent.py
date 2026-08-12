@@ -1,7 +1,7 @@
 from langchain.agents import create_agent
 from langchain_ollama import ChatOllama
-from prompts import audit_prompt
-from tools import get_audit_history , analyze_checklist
+from prompts import report_prompt
+from tools import get_report_data
 
 
 llm = ChatOllama(
@@ -12,8 +12,8 @@ llm = ChatOllama(
             think=False
     )
 
-audit_agent = create_agent(
+report_agent = create_agent(
     model=llm,
-    tools=[get_audit_history, analyze_checklist],
-    system_prompt=audit_prompt
+    tools=[get_report_data],
+    system_prompt=report_prompt
 )

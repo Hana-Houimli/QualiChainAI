@@ -1,0 +1,34 @@
+from bson import ObjectId
+from pymongo import MongoClient
+from langchain.tools import tool
+
+client = MongoClient("mongodb://localhost:27017/")
+
+db = client["qualichainAI"]
+audit_checklists_collection = db["audit_checklists"]
+
+@tool
+def get_report_data(entity_id: str, report_type: str) -> dict:
+    """
+    Récupère les données nécessaires à la génération d'un rapport.
+    """
+    if report_type == "audit":
+
+        audit = audit_checklists_collection.find_one(
+            {"checklist_id": entity_id},
+            {"_id": 0}
+        )
+
+        if not audit:
+            return {
+                "error": "Audit introuvable."
+            }
+
+        return {
+            "report_type": "audit",
+            "data": audit
+        }
+
+    return {
+        "error": f"Type de rapport non supporté : {report_type}"
+    }

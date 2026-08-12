@@ -10,18 +10,5 @@ def create_rag_tool(name, description, vector_db):
         if not docs:
             return "No relevant documents found."
 
-        sources = [
-            {
-                "content": doc.page_content,
-                "source": doc.metadata.get("source", "Source inconnue")
-            }
-            for doc in docs
-        ]
-
-        return "\n\n".join(
-            f"SOURCE: {item['source']}\n"
-            f"CONTENT:\n{item['content']}"
-            for item in sources
-        )
-
+        return "\n\n".join(doc.page_content for doc in docs)
     return retrieve_documents

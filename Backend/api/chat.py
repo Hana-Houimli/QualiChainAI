@@ -1,10 +1,9 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
+from langchain_core.messages import HumanMessage
+from graph.workflow import app
 
-from core.dependencies import regulatory_agent
-
-
-router = APIRouter(
+chat_router = APIRouter(
     prefix="/regulatory",
     tags=["Regulatory"]
 )
@@ -15,12 +14,18 @@ class QuestionRequest(BaseModel):
 
 
 
-@router.post("/chat")
+@chat_router.post("/chat")
 def chat(request: QuestionRequest):
 
-    result = regulatory_agent.run(
-        request.question
-    )
+    result = app.invoke(
+    {
+        "messages":[
+            HumanMessage(
+                content=request.question
+            )
+        ]
+    }
+)
 
     answer = result["messages"][-1].content
 

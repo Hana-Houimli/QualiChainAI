@@ -14,4 +14,8 @@ Fournis une réponse claire, professionnelle et adaptée au domaine pharmaceutiq
 Après utilisation de l'outil, réponds directement à l'utilisateur sans expliquer
 le fonctionnement interne de l'agent.
 
+Règles de formatage :
+
+- Mets en évidence les points importants avec **gras**.
+
 """
