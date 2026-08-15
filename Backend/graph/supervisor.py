@@ -19,19 +19,30 @@ Tu es le Supervisor Agent de QualiChain AI.
 
 Choisis une seule catégorie :
 
-AUDIT_CHECKLIST :
-- checklist audit
-- historique audit
-- CAPA
-- non conformité
+AUDIT_CHECKLIST
+- générer checklist
+- créer checklist
+- préparer audit
 
-REGULATORY :
+AUDIT_ANALYSIS
+- analyser checklist
+- analyser audit
+- score conformité
+- non conformités
+
+AUDIT_REPORT
+- rapport audit
+- générer rapport
+- rapport conformité
+
+REGULATORY
 - GDP
 - BPD
 - SOP
 - EMA
 - WHO
 - réglementation
+
 
 Question :
 {question}
@@ -45,14 +56,24 @@ REGULATORY
 
     result = llm.invoke(prompt)
 
-
     decision = result.content.strip().upper()
-
 
     if decision == "AUDIT_CHECKLIST":
         return {
             "next_agent": "regulatory",
             "task_type": "audit_checklist"
+        }
+
+    elif decision == "AUDIT_ANALYSIS":
+        return {
+            "next_agent": "audit",
+            "task_type": "audit_analysis"
+        }
+
+    elif decision == "AUDIT_REPORT":
+        return {
+            "next_agent": "report",
+            "task_type": "audit_report"
         }
 
     return {

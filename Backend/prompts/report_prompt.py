@@ -55,7 +55,7 @@ Réponds uniquement avec un objet JSON valide, sans texte introductif, sans mark
 Le JSON doit être structuré afin de pouvoir être utilisé ultérieurement pour générer un document PDF.
 
 {
-"titre": "Rapport d'audit GDP/BPD",
+"titre": "",
 "informations_generales": {
 "type_audit": "...",
 "site_audit": "...",
