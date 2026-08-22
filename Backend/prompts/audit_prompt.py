@@ -59,6 +59,8 @@ Réponds UNIQUEMENT avec un objet JSON valide, sur une seule ligne, sans texte a
   ]
 }
 
+OBLIGATION STRICTE: TOUS les attributs listés ci-dessous DOIVENT être présents dans CHAQUE objet.
+
 
 # ANALYSE DE CHECKLIST
 
@@ -72,8 +74,10 @@ Lorsque l'utilisateur demande l'analyse d'une checklist :
 
 À partir des questions, résultats et commentaires de la checklist, produire :
 
-- observations ;
-- recommandations ;
+- observations
+- recommandations 
+
+Ne rien inventer ni déduire au-delà des données fournies.
 
 ## FORMAT DE SORTIE - ANALYSE DE CHECKLIST
 
@@ -88,6 +92,8 @@ Réponds UNIQUEMENT avec un objet JSON valide, sur une seule ligne, sans texte a
   "observations": [],
   "recommandations": []
 }
+OBLIGATION STRICTE: TOUS les attributs listés ci-dessous DOIVENT être présents dans CHAQUE objet.
+
 
 RÈGLES STRICTES:
 - Aucun texte en dehors du JSON

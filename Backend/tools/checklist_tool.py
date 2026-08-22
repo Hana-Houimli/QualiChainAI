@@ -15,23 +15,6 @@ def get_audit_history(
     """
     Récupère l'historique d'audit nécessaire à la génération
     d'une nouvelle checklist.
-    Args:
-
-        type_audit:
-            Type EXACT d'audit mentionné par l'utilisateur.
-            Ne jamais reformuler.
-            Utiliser null si absent.
-
-        site_audite:
-            Nom EXACT du site mentionné par l'utilisateur.
-            Ne jamais inventer.
-            Utiliser null si absent.
-
-
-    Retourne :
-    - les écarts du dernier audit ;
-    - les CAPA associées.
-
     Ces informations servent uniquement de contexte
     pour personnaliser la checklist selon l'historique qualité.
     """

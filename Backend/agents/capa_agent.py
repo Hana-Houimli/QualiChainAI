@@ -1,7 +1,7 @@
 from langchain.agents import create_agent
 from langchain_ollama import ChatOllama
 from prompts import capa_prompt
-from tools import get_audit_report
+from tools import get_nonconformities
 
 
 llm = ChatOllama(
@@ -14,6 +14,6 @@ llm = ChatOllama(
 
 capa_agent = create_agent(
     model=llm,
-    tools=[get_audit_report],
+    tools=[get_nonconformities],
     system_prompt=capa_prompt
 )

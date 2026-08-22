@@ -13,8 +13,6 @@ CHROMA_PATH = BASE_DIR / "storage" / "chroma_db"
 
 vectordb_gdp = VectorStore(embedding_model= EMBEDDING_MODEL,collection_name="gdp_documents",persist_directory=CHROMA_PATH)
 
-vectordb_sop = VectorStore(embedding_model=EMBEDDING_MODEL,collection_name="sop_documents",persist_directory=CHROMA_PATH)
-
 gdp_research = create_rag_tool(
     name="gdp_research",
     description="""
@@ -25,13 +23,7 @@ gdp_research = create_rag_tool(
 )
 
 
-# SOP Tool
-sop_research = create_rag_tool(
-    name="sop_research",
-    description="""
-    Recherche des procédures opératoires standard (SOP) internes pharmaceutiques.""",
-    vector_db=vectordb_sop
-)
+
 
 llm = ChatOllama(
             model="qwen3:8b",
@@ -44,7 +36,7 @@ llm = ChatOllama(
 
 regulatory_agent = create_agent(
     model = llm,
-    tools=[gdp_research,sop_research,websearch_tool],
+    tools=[gdp_research,websearch_tool],
     system_prompt=regulatory_prompt,
     
 )

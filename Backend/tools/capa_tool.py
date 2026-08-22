@@ -4,38 +4,43 @@ from pymongo import MongoClient
 client = MongoClient("mongodb://localhost:27017/")
 db = client["qualichainAI"]
 
-reports_collection = db["audits_reports"]
+checklist_collection = db["audit_checklists"]
 
 @tool
-def get_audit_report(checklist_id: str) -> dict:
+def get_nonconformities(checklist_id: str) -> dict:
     """
-    Récupère les informations utiles du rapport d'audit
-    pour la génération d'un CAPA.
+    Récupère toutes les non-conformités d'une checklist d'audit.
     """
 
-    report = reports_collection.find_one(
+    checklist = checklist_collection.find_one(
         {"checklist_id": checklist_id}
     )
 
-    if not report:
+    if not checklist:
         return {
-            "error": f"Aucun rapport trouvé pour {checklist_id}"
+            "error": f"Aucune checklist trouvée pour {checklist_id}"
         }
 
-    report_data = report.get("report", {})
+    non_conformites = []
+
+    for section in checklist.get("sections", []):
+
+        for point in section.get("points_controle", []):
+
+            if point.get("resultat") == "Non conforme":
+
+                non_conformites.append(
+                    {
+                        "section": section["nom_section"],
+                        "question": point["question"],
+                        "criticite": point["criticite"],
+                        "commentaire": point.get(
+                            "commentaire",
+                            ""
+                        )
+                    }
+                )
 
     return {
-        "checklist_id": checklist_id,
-        "non_conformites": report_data.get(
-            "non_conformites",
-            []
-        ),
-        "observations": report_data.get(
-            "observations",
-            []
-        ),
-        "recommandations": report_data.get(
-            "recommandations",
-            []
-        )
+        "non_conformites": non_conformites
     }

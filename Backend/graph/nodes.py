@@ -1,5 +1,5 @@
 
-from agents import regulatory_agent , audit_agent , report_agent
+from agents import regulatory_agent , audit_agent , report_agent, capa_agent
 from langchain_core.messages import HumanMessage
 
 def regulatory_node(state):
@@ -21,8 +21,8 @@ def regulatory_node(state):
             ]
         }
 
-    # If regulatory is only providing context for audit
-    elif state["task_type"] == "audit_checklist":
+    # If regulatory is only providing context for audit and capa
+    else:
 
         return {
             "regulatory_context": regulatory_answer.content
@@ -75,6 +75,19 @@ def report_node(state):
 
     response = report_agent.invoke(
         {
+            "messages": state["messages"]
+        }
+    )
+
+    return {
+        "messages": [
+            response["messages"][-1]
+        ]
+    }
+
+
+def capa_node(state):
+    response = capa_agent.invoke({
             "messages": state["messages"]
         }
     )

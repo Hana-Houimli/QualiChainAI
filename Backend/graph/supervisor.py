@@ -30,6 +30,14 @@ AUDIT_ANALYSIS
 - score conformité
 - non conformités
 
+CAPA
+- capa
+- générer capa
+- créer capa
+- plan capa
+- action corrective
+- action préventive
+
 AUDIT_REPORT
 - rapport audit
 - générer rapport
@@ -44,12 +52,16 @@ REGULATORY
 - réglementation
 
 
+
 Question :
 {question}
 
-Répond uniquement :
+Répond uniquement par UNE des valeurs suivantes :
+
 AUDIT_CHECKLIST
-ou
+AUDIT_ANALYSIS
+AUDIT_REPORT
+CAPA
 REGULATORY
 """ 
 
@@ -75,6 +87,12 @@ REGULATORY
             "next_agent": "report",
             "task_type": "audit_report"
         }
+    elif decision == "CAPA":
+        return{
+            "next_agent": "capa",
+            "task_type": "plan_capa"
+        } 
+
 
     return {
         "next_agent": "regulatory",

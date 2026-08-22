@@ -3,7 +3,7 @@ from langgraph.graph import StateGraph, END
 from graph.state import AgentState
 from graph.nodes import (
     audit_node,
-    regulatory_node, report_node
+    regulatory_node, report_node , capa_node
 )
 from graph.supervisor import supervisor_node
 
@@ -16,6 +16,7 @@ graph.add_node("supervisor", supervisor_node)
 graph.add_node("regulatory", regulatory_node)
 graph.add_node("audit", audit_node)
 graph.add_node("report", report_node)
+graph.add_node("capa",capa_node)
 
 
 # Start
@@ -33,7 +34,8 @@ graph.add_conditional_edges(
     {
         "regulatory": "regulatory",
         "audit": "audit",
-        "report": "report"
+        "report": "report",
+        "capa": "capa"
     }
 )
 
@@ -60,5 +62,7 @@ graph.add_conditional_edges(
 graph.add_edge("audit", END)
 
 graph.add_edge("report", END)
+
+graph.add_edge("capa",END)
 
 app = graph.compile()
