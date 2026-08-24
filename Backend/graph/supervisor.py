@@ -89,7 +89,7 @@ REGULATORY
         }
     elif decision == "CAPA":
         return{
-            "next_agent": "capa",
+            "next_agent": "regulatory",
             "task_type": "plan_capa"
         } 
 

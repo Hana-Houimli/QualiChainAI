@@ -1,7 +1,7 @@
 from pathlib import Path
 from rag.config import *
 from rag import VectorStore
-from tools import create_rag_tool , websearch_tool
+from tools import create_rag_tool , websearch_tool , get_nonconformities
 from prompts import regulatory_prompt
 from langchain.agents import create_agent
 from langchain_ollama import ChatOllama
@@ -36,7 +36,7 @@ llm = ChatOllama(
 
 regulatory_agent = create_agent(
     model = llm,
-    tools=[gdp_research,websearch_tool],
+    tools=[gdp_research,websearch_tool,get_nonconformities],
     system_prompt=regulatory_prompt,
     
 )

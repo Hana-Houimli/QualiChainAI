@@ -14,6 +14,6 @@ llm = ChatOllama(
 
 capa_agent = create_agent(
     model=llm,
-    tools=[get_nonconformities],
+    tools=[],
     system_prompt=capa_prompt
 )

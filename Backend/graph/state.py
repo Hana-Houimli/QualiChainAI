@@ -11,3 +11,5 @@ class AgentState(TypedDict):
     task_type: str
 
     regulatory_context: str | None
+
+    non_conformities: list | None

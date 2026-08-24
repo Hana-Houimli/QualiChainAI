@@ -1,17 +1,12 @@
 from pymongo import MongoClient
 from langchain.tools import tool
 
-
 client = MongoClient("mongodb://localhost:27017/")
-
 db = client["qualichainAI"]
 
 
 @tool
-def get_audit_history(
-    type_audit: str,
-    site_audite: str
-):
+def get_audit_history(type_audit: str,site_audit: str) -> dict:
     """
     Récupère l'historique d'audit nécessaire à la génération
     d'une nouvelle checklist.
@@ -19,54 +14,45 @@ def get_audit_history(
     pour personnaliser la checklist selon l'historique qualité.
     """
 
-
-    # 2 - Dernier audit réalisé
-    previous_audit = db.audit_reports.find_one(
-    {
-        "type_audit": {
-            "$regex": type_audit,
-            "$options": "i"
-        },
-        "entete.site_audite": {
-            "$regex": site_audite,
-            "$options": "i"
-        }
-    },
-    {
-        "_id": 0,
-        "reference_rapport": 1,
-        "constats_detailles": 1
-    },
-    sort=[("entete.date_audit", -1)]
-)
-
-    capa = None
-
-    if previous_audit:
-
-        capa = db.CAPA_reports.find_one(
+    report = db.audit_reports.find_one(
         {
-            "reference_audit_associe":
-            previous_audit["reference_rapport"]
+            "informations_generales.type_audit": {
+                "$regex": type_audit,
+                "$options": "i"
+            },
+            "informations_generales.site_audit": {
+                "$regex": site_audit,
+                "$options": "i"
+            }
         },
-        {
-            "_id":0,
-            "actions_correctives.id":1,
-            "actions_correctives.criticite":1,
-            "actions_correctives.ecart_constate":1,
-            "actions_correctives.action_corrective":1,
-            "actions_correctives.action_preventive":1,
-            "actions_correctives.statut_action":1
-        }
+        sort=[
+            (
+                "informations_generales.date_audit",
+                -1
+            )
+        ]
     )
 
+    if not report:
+        return {
+            "historique_disponible": False
+        }
 
     return {
-    
-    "previous_findings": (
-        previous_audit.get("constats_detailles") if previous_audit else []
-    ),
-    "actions_correctives": (
-        capa.get("actions_correctives") if capa else []
-    ),
-}
+        "historique_disponible": True,
+        "checklist_id": report.get(
+            "checklist_id"
+        ),
+        "non_conformites": report.get(
+            "non_conformites",
+            []
+        ),
+        "observations": report.get(
+            "observations",
+            []
+        ),
+        "plan_capa": report.get(
+            "plan_capa",
+            {}
+        )
+    }

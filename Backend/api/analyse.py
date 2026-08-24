@@ -3,25 +3,23 @@ from pydantic import BaseModel
 from langchain_core.messages import HumanMessage
 from graph.workflow import app
 
-audit_router = APIRouter()
+analysis_router = APIRouter()
 
 
-class ChecklistRequest(BaseModel):
-    type_audit: str
-    site_audit: str
+class ChecklistIdRequest(BaseModel):
+    checklist_id: str
 
 
-@audit_router.post("/generate")
-def generate_checklist(request: ChecklistRequest):
+@analysis_router.post("/analyze")
+def analyze_checklist(request: ChecklistIdRequest):
 
     result = app.invoke(
         {
             "messages": [
                 HumanMessage(
                     content=(
-                        f"Génère une checklist pour "
-                        f"un audit {request.type_audit} "
-                        f"du site {request.site_audit}"
+                        f"Analyser checklist "
+                        f"{request.checklist_id}"
                     )
                 )
             ]
@@ -29,6 +27,6 @@ def generate_checklist(request: ChecklistRequest):
     )
 
     return {
-        "checklist":
+        "analysis":
         result["messages"][-1].content
     }

@@ -3,10 +3,7 @@ from pydantic import BaseModel
 from langchain_core.messages import HumanMessage
 from graph.workflow import app
 
-chat_router = APIRouter(
-    prefix="/regulatory",
-    tags=["Regulatory"]
-)
+chat_router = APIRouter()
 
 
 class QuestionRequest(BaseModel):

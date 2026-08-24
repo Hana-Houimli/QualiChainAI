@@ -45,6 +45,9 @@ def regulatory_router(state):
     if state["task_type"] == "audit_checklist":
         return "audit"
 
+    elif state["task_type"] == "plan_capa":
+        return "capa"
+
     return "end"
 
 
@@ -53,6 +56,7 @@ graph.add_conditional_edges(
     regulatory_router,
     {
         "audit": "audit",
+        "capa": "capa",
         "end": END
     }
 )

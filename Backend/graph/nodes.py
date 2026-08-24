@@ -2,6 +2,9 @@
 from agents import regulatory_agent , audit_agent , report_agent, capa_agent
 from langchain_core.messages import HumanMessage
 
+import json
+
+
 def regulatory_node(state):
 
     response = regulatory_agent.invoke(
@@ -12,7 +15,10 @@ def regulatory_node(state):
 
     regulatory_answer = response["messages"][-1]
 
-    # If regulatory is the final destination
+    # ==========================================
+    # QUESTION RÉGLEMENTAIRE
+    # ==========================================
+
     if state["task_type"] == "regulatory_question":
 
         return {
@@ -21,14 +27,30 @@ def regulatory_node(state):
             ]
         }
 
-    # If regulatory is only providing context for audit and capa
+    # ==========================================
+    # CAPA
+    # ==========================================
+
+    elif state["task_type"] == "plan_capa":
+
+        data = json.loads(
+            regulatory_answer.content
+        )
+
+        return {
+            "regulatory_context": data["regulatory_context"],
+            "non_conformities": data["non_conformities"]
+        }
+
+    # ==========================================
+    # AUDIT CHECKLIST
+    # ==========================================
+
     else:
 
         return {
             "regulatory_context": regulatory_answer.content
         }
-
-    
 
 def audit_node(state):
 
@@ -69,8 +91,6 @@ def audit_node(state):
 
 
 
-
-
 def report_node(state):
 
     response = report_agent.invoke(
@@ -87,8 +107,27 @@ def report_node(state):
 
 
 def capa_node(state):
-    response = capa_agent.invoke({
-            "messages": state["messages"]
+
+    response = capa_agent.invoke(
+        {
+            "messages": [
+                HumanMessage(
+                    content=f"""
+Voici les non-conformités identifiées :
+
+{state["non_conformities"]}
+
+
+Voici les exigences réglementaires applicables :
+
+{state["regulatory_context"]}
+
+
+Génère le plan CAPA conformément aux exigences
+réglementaires fournies.
+"""
+                )
+            ]
         }
     )
 
