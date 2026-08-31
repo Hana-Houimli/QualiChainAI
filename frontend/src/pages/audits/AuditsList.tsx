@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PageHeader } from '../../components/shared/PageHeader';
 import { Button } from '../../components/ui/Button';
 import { Icon } from '../../components/ui/Icon';
@@ -28,12 +29,30 @@ const auditTypes: AuditType[] = [
   'Audit Transport',
 ];
 
-const tunisianSites = ['Tunis', 'Sfax', 'Sousse', 'Monastir', 'Bizerte', 'Gabès', 'Nabeul', 'Kairouan', 'Mahdia', 'Tataouine'];
+const SITES_PHARMACEUTIQUES = [
+
+    "Dépôt central Tunis",
+    "Entrepôt Ariana",
+    "Centre de distribution Sousse",
+    "Plateforme logistique Sfax",
+    "Entrepôt frigorifique Monastir",
+    "Grossiste répartiteur Nord",
+    "Grossiste répartiteur Sud",
+    "Sous-traitant transport pharmaceutique",
+    "Fournisseur médicaments",
+    "Fournisseur dispositifs médicaux",
+    "Site de stockage vaccins",
+    "Pharmacie hospitalière",
+    "Centre de distribution régional",
+    "Entrepôt produits thermosensibles",
+    "Prestataire logistique GDP"
+
+];
 
 const defaultForm = {
   type: auditTypes[0],
   site: 'Tunis',
-  auditor: 'Omar Hafoudhi',
+  auditor: 'Hana Houimli',
   date: '',
 };
 
@@ -43,8 +62,10 @@ export default function AuditsList() {
   const [auditItems, setAuditItems] = useState<AuditItem[]>(initialAudits);
   const [formData, setFormData] = useState(defaultForm);
 
-  const siteOptions = tunisianSites;
-  const auditorOptions = ['Omar Hafoudhi', 'S. Ben Amor', 'J. Dupont', 'F. El Amrani', 'L. Garcia', 'ANSM Team'];
+  const siteOptions = SITES_PHARMACEUTIQUES ;
+  const auditorOptions = ['Hana Houimli', 'S. Ben Amor', 'J. Dupont', 'F. El Amrani', 'L. Garcia', 'ANSM Team'];
+
+  const navigate = useNavigate();
 
   const handleCreateAudit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -138,7 +159,7 @@ export default function AuditsList() {
                 </label>
 
                 <label className="space-y-2 text-sm font-medium text-ink-primary dark:text-dark-text">
-                  <span>Site / Ville <span className="text-danger">*</span></span>
+                  <span>Site <span className="text-danger">*</span></span>
                   <select
                     required
                     value={formData.site}

@@ -13,3 +13,9 @@ class AgentState(TypedDict):
     regulatory_context: str | None
 
     non_conformities: list | None
+
+    agents_used: Annotated[list[str], add]
+
+    tools_used: Annotated[list[str], add]
+
+    tool_outputs: Annotated[list[dict], add]

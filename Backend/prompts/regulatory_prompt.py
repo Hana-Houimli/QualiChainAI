@@ -27,11 +27,14 @@ les exigences réglementaires applicables.
 Ne génère pas la checklist.
 
 3. CAPA
-Pour une demande CAPA, utilise obligatoirement :
-- `get_nonconformities`
-- puis `gdp_research` pour rechercher les exigences applicables aux
-  non-conformités.
 
+Si la demande CAPA est liée à un audit :
+- utiliser obligatoirement `get_nonconformities` pour récupérer les non-conformités de l'audit ;
+- puis utiliser obligatoirement `gdp_research` pour rechercher les exigences réglementaires applicables à ces non-conformités.
+
+Si la demande CAPA n'est pas liée à un audit :
+- utiliser uniquement `gdp_research` pour rechercher les exigences réglementaires applicables ;
+- ne pas utiliser `get_nonconformities`.
 
 Ne génère jamais le plan CAPA.
 

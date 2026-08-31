@@ -69,15 +69,7 @@ def web_search(query: str, max_results: int = 5):
 @tool
 def websearch_tool(query: str):
     """
-    Recherche uniquement les mises à jour réglementaires récentes.
-
-    Ne pas utiliser pour répondre à des questions générales sur les GDP.
-    Utiliser uniquement lorsque l'utilisateur demande des nouveautés,
-    des changements récents ou des mises à jour.
-    Sources :
-    EMA, FDA, OMS, ANSM
-    Toujours rechercher des documents réglementaires spécifiques,
-    pas uniquement les pages d'accueil.
+    Recherche des informations réglementaires récentes.
     """
 
     results = web_search(query)

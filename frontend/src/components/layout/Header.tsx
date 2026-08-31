@@ -73,16 +73,16 @@ export function Header() {
             className="flex items-center gap-2 rounded-lg py-1 pl-1 pr-2 hover:bg-slate-100 dark:hover:bg-white/5"
           >
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-xs font-bold text-white">
-              OH
+              HH
             </div>
-            <span className="hidden text-sm font-medium text-ink-primary dark:text-dark-text sm:block">Omar Hafoudhi</span>
+            <span className="hidden text-sm font-medium text-ink-primary dark:text-dark-text sm:block">Hana Houimli</span>
             <Icon name="ChevronDown" size={14} className="hidden text-ink-secondary dark:text-dark-subtext sm:block" />
           </button>
           {profileOpen && (
             <div className="absolute right-0 mt-2 w-56 animate-slide-up rounded-2xl border border-surface-border bg-surface-card p-2 shadow-elevated dark:border-dark-border dark:bg-dark-card">
               <div className="px-3 py-2">
-                <p className="text-sm font-semibold text-ink-primary dark:text-dark-text">Omar Hafoudhi</p>
-                <p className="text-xs text-ink-secondary dark:text-dark-subtext">CEO PHARMALINK</p>
+                <p className="text-sm font-semibold text-ink-primary dark:text-dark-text">Hana Houimli</p>
+                <p className="text-xs text-ink-secondary dark:text-dark-subtext">Administrator</p>
               </div>
               <div className="my-1 h-px bg-surface-border dark:bg-dark-border" />
               {[

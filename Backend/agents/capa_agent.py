@@ -5,7 +5,7 @@ from tools import get_nonconformities
 
 
 llm = ChatOllama(
-            model="qwen3:8b",
+            model="llama3.1:8b",
             base_url="https://happening-colt-delouse.ngrok-free.dev",
             temperature=0,
             num_predict=4096,

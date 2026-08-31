@@ -7,11 +7,7 @@ import { DataTable, type Column } from '../../components/shared/DataTable';
 interface UserRow { id: string; name: string; email: string; role: string; site: string; status: 'active' | 'inactive'; }
 
 const users: UserRow[] = [
-  { id: 'u1', name: 'Omar Hafoudhi', email: 'o.hafoudhi@pharmalink.com', role: 'QA Manager', site: 'Tunis', status: 'active' },
-  { id: 'u2', name: 'Julie Dupont', email: 'j.dupont@pharmalink.com', role: 'Auditor', site: 'Lyon', status: 'active' },
-  { id: 'u3', name: 'Farah El Amrani', email: 'f.elamrani@pharmalink.com', role: 'Warehouse Supervisor', site: 'Casablanca', status: 'active' },
-  { id: 'u4', name: 'Luis Garcia', email: 'l.garcia@pharmalink.com', role: 'Quality Analyst', site: 'Madrid', status: 'inactive' },
-  { id: 'u5', name: 'Marco Haddad', email: 'm.haddad@pharmalink.com', role: 'Logistics Manager', site: 'Tunis', status: 'active' },
+  { id: 'u1', name: 'Hana Houimli', email: 'hanahouimli003@gmail.com', role: 'Administrator', site: 'Tunis', status: 'active' },
 ];
 
 const columns: Column<UserRow>[] = [
@@ -33,8 +29,6 @@ const columns: Column<UserRow>[] = [
 ];
 
 const logs = [
-  { icon: 'LogIn', text: 'Omar Hafoudhi s\'est connecté', time: 'il y a 10 min' },
-  { icon: 'UserPlus', text: 'Nouvel utilisateur créé: Luis Garcia', time: 'il y a 2 h' },
   { icon: 'ShieldCheck', text: 'Permissions modifiées pour le rôle Auditor', time: 'il y a 1 jour' },
   { icon: 'FileEdit', text: 'Configuration système mise à jour', time: 'il y a 3 jours' },
 ];

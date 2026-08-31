@@ -1,6 +1,7 @@
 
 from agents import regulatory_agent , audit_agent , report_agent, capa_agent
 from langchain_core.messages import HumanMessage
+from utils.extract_tool_info import extract_tool_trace
 
 import json
 
@@ -15,6 +16,8 @@ def regulatory_node(state):
 
     regulatory_answer = response["messages"][-1]
 
+    tools_used, tool_outputs = extract_tool_trace(response)
+
     # ==========================================
     # QUESTION RÉGLEMENTAIRE
     # ==========================================
@@ -24,9 +27,13 @@ def regulatory_node(state):
         return {
             "messages": [
                 regulatory_answer
-            ]
-        }
+            ],
+            "agents_used": ["regulatory"],
 
+            "tools_used": tools_used,
+
+            "tool_outputs": tool_outputs
+        }
     # ==========================================
     # CAPA
     # ==========================================
@@ -39,7 +46,14 @@ def regulatory_node(state):
 
         return {
             "regulatory_context": data["regulatory_context"],
-            "non_conformities": data["non_conformities"]
+
+            "non_conformities": data["non_conformities"],
+
+            "agents_used": ["regulatory"],
+
+            "tools_used": tools_used,
+
+            "tool_outputs": tool_outputs
         }
 
     # ==========================================
@@ -49,7 +63,13 @@ def regulatory_node(state):
     else:
 
         return {
-            "regulatory_context": regulatory_answer.content
+            "regulatory_context": regulatory_answer.content,
+
+            "agents_used": ["regulatory"],
+
+            "tools_used": tools_used,
+
+            "tool_outputs": tool_outputs
         }
 
 def audit_node(state):
@@ -63,11 +83,6 @@ def audit_node(state):
             }
         )
 
-        return {
-            "messages": [
-                response["messages"][-1]
-            ]
-        }
 
     # Génération d'une nouvelle checklist
     elif state["task_type"] == "audit_checklist":
@@ -83,13 +98,19 @@ def audit_node(state):
             }
         )
 
-        return {
-            "messages": [
-                response["messages"][-1]
-            ]
-        }
+    tools_used, tool_outputs = extract_tool_trace(response)
 
+    return {
+    "messages": [
+        response["messages"][-1]
+    ],
 
+    "agents_used": ["audit"],
+
+    "tools_used": tools_used,
+
+    "tool_outputs": tool_outputs
+}
 
 def report_node(state):
 
@@ -98,17 +119,45 @@ def report_node(state):
             "messages": state["messages"]
         }
     )
+    tools_used, tool_outputs = extract_tool_trace(response)
 
     return {
         "messages": [
             response["messages"][-1]
-        ]
-    }
+        ],
 
+        "agents_used": ["report"],
+
+        "tools_used": tools_used,
+
+        "tool_outputs": tool_outputs
+
+    }
 
 def capa_node(state):
 
-    response = capa_agent.invoke(
+    if state.get("non_conformities", []) == []:
+        response = capa_agent.invoke(
+        {
+            "messages": [
+                HumanMessage(
+                    content=f"""
+Voici Demande de l'utilisateur :
+{state["messages"][0].content}
+
+
+Voici les exigences réglementaires applicables :
+{state.get("regulatory_context", "")}
+
+Génère le plan CAPA conformément aux exigences
+réglementaires fournies.
+"""
+                )
+            ]
+        }
+    )
+    else: 
+        response = capa_agent.invoke(
         {
             "messages": [
                 HumanMessage(
@@ -130,9 +179,16 @@ réglementaires fournies.
             ]
         }
     )
+    tools_used, tool_outputs = extract_tool_trace(response)
 
     return {
-        "messages": [
-            response["messages"][-1]
-        ]
-    }
+    "messages": [
+        response["messages"][-1]
+    ],
+
+    "agents_used": ["capa"],
+
+    "tools_used": tools_used,
+
+    "tool_outputs": tool_outputs
+}

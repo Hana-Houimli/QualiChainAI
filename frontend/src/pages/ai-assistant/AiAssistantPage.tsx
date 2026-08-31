@@ -1,28 +1,21 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ReactMarkdown from 'react-markdown';
 import { Icon } from '../../components/ui/Icon';
 import { Button } from '../../components/ui/Button';
 import { cn } from '../../utils/cn';
 import type { ChatMessage } from '../../types';
 
-const history = [
-  { id: 'h1', title: 'Génération CAPA - Excursion chambre froide', time: 'Aujourd\'hui' },
-  { id: 'h2', title: 'Checklist audit fournisseur GDP', time: 'Hier' },
-  { id: 'h3', title: 'Résumé SOP-QA-014 v4.2', time: '2 jours' },
-  { id: 'h4', title: 'Exigences EU GDP Annexe 3', time: '5 jours' },
-];
 
 const suggestions = [
-  { icon: 'ListChecks', label: 'Générer une checklist d\'audit fournisseur' },
-  { icon: 'FileWarning', label: 'Créer une CAPA depuis une non-conformité' },
   { icon: 'FileText', label: 'Rédiger un SOP de gestion des retours' },
-  { icon: 'Scale', label: 'Citer les exigences réglementaires GDP' },
+  { icon: 'Scale', label: 'Citer les exigences réglementaires GDP' }
 ];
 
 const initialMessages: ChatMessage[] = [
   {
     id: 'm1', role: 'assistant',
-    content: "Bonjour Omar 👋 Je suis l'assistant qualité QualiChain AI. Je peux générer des CAPA, des checklists d'audit, des SOP et répondre à vos questions de conformité GDP/BPD avec citations réglementaires. Comment puis-je vous aider aujourd'hui ?",
+    content: "Bonjour Hana 👋 Je suis l'assistant qualité QualiChain AI. Je peux générer des CAPA, des checklists d'audit, des SOP et répondre à vos questions de conformité GDP/BPD avec citations réglementaires. Comment puis-je vous aider aujourd'hui ?",
     timestamp: '09:14',
   },
 ];
@@ -41,7 +34,7 @@ export default function AiAssistantPage() {
 
     (async () => {
       try {
-        const res = await fetch('http://localhost:8000/regulatory/chat', {
+        const res = await fetch('http://localhost:8000/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ question: text })
@@ -77,15 +70,6 @@ export default function AiAssistantPage() {
         <Button variant="primary" className="w-full justify-start" onClick={() => setMessages(initialMessages)}>
           <Icon name="Plus" size={16} /> Nouvelle conversation
         </Button>
-        <p className="mb-2 mt-5 px-2 text-xs font-semibold uppercase tracking-wide text-ink-secondary dark:text-dark-subtext">Historique</p>
-        <div className="flex-1 space-y-1 overflow-y-auto">
-          {history.map((h) => (
-            <button key={h.id} className="w-full rounded-xl px-3 py-2.5 text-left hover:bg-slate-50 dark:hover:bg-white/5">
-              <p className="truncate text-sm font-medium text-ink-primary dark:text-dark-text">{h.title}</p>
-              <p className="text-xs text-ink-secondary dark:text-dark-subtext">{h.time}</p>
-            </button>
-          ))}
-        </div>
       </aside>
 
       <div className="flex flex-1 flex-col rounded-2xl border border-surface-border bg-surface-card dark:border-dark-border dark:bg-dark-card">
@@ -111,7 +95,9 @@ export default function AiAssistantPage() {
                 msg.role === 'assistant'
                   ? 'bg-slate-50 text-ink-primary dark:bg-white/5 dark:text-dark-text'
                   : 'bg-primary text-white')}>
-                <p>{msg.content}</p>
+                <div className="break-words whitespace-pre-wrap">
+                  <ReactMarkdown>{msg.content}</ReactMarkdown>
+                </div>
                 {msg.citations && (
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {msg.citations.map((c) => (

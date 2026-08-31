@@ -66,10 +66,10 @@ export default function SettingsPage() {
           {active === 'profile' && (
             <Card className="p-6">
               <div className="flex items-center gap-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-lg font-bold text-white">SB</div>
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-lg font-bold text-white">HH</div>
                 <div>
-                  <p className="text-sm font-semibold text-ink-primary dark:text-dark-text">Omar Hafoudhi</p>
-                  <p className="text-xs text-ink-secondary dark:text-dark-subtext">QA Manager · Site D Tunis</p>
+                  <p className="text-sm font-semibold text-ink-primary dark:text-dark-text">Hana Houimli</p>
+                  <p className="text-xs text-ink-secondary dark:text-dark-subtext">Administrator</p>
                 </div>
               </div>
               <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">

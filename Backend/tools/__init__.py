@@ -3,4 +3,4 @@ from .websearch_tool import websearch_tool
 from .checklist_tool import get_audit_history
 from .auditanalyzer_tool import analyze_checklist
 from .report_tool import get_report_data
-from .capa_tool import get_nonconformities
+from .get_nonconformities import get_nonconformities

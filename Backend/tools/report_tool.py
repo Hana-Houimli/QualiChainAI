@@ -35,9 +35,16 @@ def get_report_data(entity_id: str, report_type: str) -> dict:
     )
 
         return {
-        "checklist_id": entity_id,
-        "audit": audit,
-        "capa": capa
+        "audit": {
+                "informations_generales": {
+                    "type_audit": audit.get("type_audit"),
+                    "site_audit": audit.get("site_audit"),
+                    "date_audit": audit.get("date_audit").strftime("%d/%m/%Y"),
+                    "responsable": audit.get("responsable")
+                },
+                "analysis": audit.get("analysis")
+            },
+        "plan_capa": capa.get("actions", []) if capa else []
     }
 
     return {
