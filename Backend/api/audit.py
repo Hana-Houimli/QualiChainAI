@@ -64,7 +64,6 @@ def generate_checklist(request: ChecklistRequest):
 
     return {
         "checklist_id": checklist_id,
-        "status": checklist["status"]
     }
 
 

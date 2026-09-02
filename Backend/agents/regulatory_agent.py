@@ -37,6 +37,5 @@ llm = ChatOllama(
 regulatory_agent = create_agent(
     model = llm,
     tools=[gdp_research,websearch_tool,get_nonconformities],
-    system_prompt=regulatory_prompt,
-    
+    system_prompt=regulatory_prompt
 )

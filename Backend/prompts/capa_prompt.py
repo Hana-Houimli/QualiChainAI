@@ -27,15 +27,11 @@ Données disponibles pour une non-conformité :
 
 CAS 2 : CAPA INDÉPENDANTE D'UN AUDIT
 
-Lorsque aucune non-conformité d'audit n'est fournie et que l'utilisateur
-décrit directement une problématique :
+Lorsque l'utilisateur décrit directement une problématique :
 - utiliser la problématique décrite par l'utilisateur comme base du plan CAPA ;
 - utiliser le contexte réglementaire fourni lorsqu'il est disponible ;
 - générer les actions CAPA nécessaires pour traiter uniquement cette
   problématique.
-
-
-
 
 RÈGLES
 

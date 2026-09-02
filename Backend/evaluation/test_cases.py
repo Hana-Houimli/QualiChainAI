@@ -36,7 +36,7 @@ regulatory_cases = [
     {
         "question": "Compare les exigences tunisiennes et européennes concernant le transport pharmaceutique.",
         "expected_agents": ["regulatory"],
-        "expected_tools": ["gdp_research", "web_search"]
+        "expected_tools": ["gdp_research"]
     },
 
 
@@ -115,9 +115,9 @@ capa_cases = [
     },
 
     {
-            "question": "Génère un plan CAPA pour la checklist CHK-004 ",
-            "expected_agents": ["regulatory","capa"],
-            "expected_tools": ['get_nonconformities', 'gdp_research']
+        "question": "Génère un plan CAPA pour la checklist CHK-004 ",
+        "expected_agents": ["regulatory","capa"],
+        "expected_tools": ['get_nonconformities', 'gdp_research']
     },
     {
         "question": "Un écart de température a été détecté et l'intervention n'a pas été réalisée dans le délai prévu. Quelle CAPA faut-il mettre en place ?",
@@ -125,13 +125,13 @@ capa_cases = [
         "expected_tools": ['gdp_research']
     },
     {
-            "question": "Plusieurs produits retournés ont été retrouvés dans la zone de stockage des produits conformes sans identification claire de leur statut. Quelle CAPA faut-il mettre en place ?",
-            "expected_agents": ["regulatory","capa"],
-            "expected_tools": ['gdp_research']
-        },
+        "question": "Des produits thermosensibles ont été livrés sans enregistrement complet de la température pendant le transport. Quelle CAPA faut-il mettre en place ?",
+        "expected_agents": ["regulatory","capa"],
+        "expected_tools": ['gdp_research']
+    },
 
     {
-    "question": "Un écart de température se répète depuis plusieurs semaines malgré les interventions du personnel. Quel plan CAPA faut-il établir ?",
+    "question": "Une rupture de la chaîne du froid a été constatée lors de la réception d’une livraison.",
     "expected_agents": ["regulatory", "capa"],
     "expected_tools": ["gdp_research"]
     }

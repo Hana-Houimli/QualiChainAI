@@ -1,13 +1,15 @@
 from judge_prompt import JUDGE_PROMPT
 from langchain_core.messages import HumanMessage
+import json
 
 from langchain_ollama import ChatOllama
 judge_llm = ChatOllama(
     model="qwen3:8b",
     base_url="https://happening-colt-delouse.ngrok-free.dev",
-    temperature=0
+    temperature=0,
+    format="json"
 )
-import json
+
 
 def evaluate(test_case, result):
     judge_input = JUDGE_PROMPT.format(

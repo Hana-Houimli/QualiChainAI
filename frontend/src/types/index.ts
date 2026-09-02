@@ -1,4 +1,13 @@
-export type Status = 'open' | 'in_progress' | 'closed' | 'overdue' | 'draft' | 'approved' | 'expired';
+export type Status =
+  | 'open'
+  | 'in_progress'
+  | 'closed'
+  | 'overdue'
+  | 'draft'
+  | 'approved'
+  | 'expired'
+  | 'available'
+  | 'error';
 export type Priority = 'low' | 'medium' | 'high' | 'critical';
 
 export interface KpiCard {

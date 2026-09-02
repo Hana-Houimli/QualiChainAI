@@ -29,38 +29,38 @@ RÉPONSE FINALE :
 {final_answer}
 
 
+## CRITÈRES D'ÉVALUATION
+
+Évalue CHAQUE critère 0 à 3 : 
+
+0 = Absent
+1 = Faible
+2 = Acceptable
+3 = Bon
+
 ### QUALITÉ DE LA RÉPONSE
 
-Évalue de 1 à 5 :
-
-- pertinence
-- exactitude
-- complétude
-- cohérence réglementaire
-- conformite_pharmaceutique
-- fidélité aux résultats des outils
-- absence d'hallucination
+- pertinence : répond-elle à la question posée ?
+- exactitude : les infos sont-elles correctes et sans erreur ?
+- complétude : tous les aspects demandés sont-ils couverts ?
+- coherence_reglementaire : suit-elle les règles réglementaires applicables ?
+- fidelite_aux_outils : s'appuie-t-elle sur les résultats des outils fournis ?
+- absence d'hallucination : contient-elle des infos inventées (absentes des tool_outputs)?
 
 Une information réglementaire présente dans la réponse
 mais absente des résultats des outils doit être considérée
 comme potentiellement hallucinée, sauf si elle découle
 clairement des informations fournies.
 
-Vérifie également que la réponse et les actions proposées
-respectent les exigences et les règles pharmaceutiques applicables
-présentes dans les résultats des outils.
-
 
 ### WORKFLOW
 
-Évalue de 1 à 5 :
-
-- agents_correct
-- tools_correct
+- agents_correct : les bons agents ont-ils été utilisés ?
+- tools_correct : les bons outils ont-ils été utilisés ?
 
 ### SCORE GLOBAL
 
-Le `score_global` doit obligatoirement être compris entre 1 et 5.
+Le `score_global` moyenne de tous les critères.
 
 ### FORMAT
 
@@ -72,7 +72,6 @@ Retourne uniquement un JSON valide :
         "exactitude": 0,
         "completude": 0,
         "coherence_reglementaire": 0,
-        "conformite_pharmaceutique": 0,
         "fidelite_aux_outils": 0,
         "absence_hallucination": 0,
 

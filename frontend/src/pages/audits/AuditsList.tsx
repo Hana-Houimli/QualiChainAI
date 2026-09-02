@@ -67,16 +67,18 @@ export default function AuditsList() {
 
   const navigate = useNavigate();
 
-  const handleCreateAudit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleCreateAudit = async (
+  event: React.FormEvent<HTMLFormElement>
+) => {
+  event.preventDefault();
 
-    if (!formData.date) {
-      return;
-    }
+  try {
 
-    const nextAudit: AuditItem = {
-      id: `a${Date.now()}`,
-      reference: `AUD-${new Date(formData.date).getFullYear()}-${String(auditItems.length + 1).padStart(3, '0')}`,
+    const tempId = `tmp-${Date.now()}`;
+
+    const tempAudit: AuditItem = {
+      id: tempId,
+      reference: 'Génération...',
       title: `${formData.type} - ${formData.site}`,
       site: formData.site,
       auditor: formData.auditor,
@@ -86,10 +88,52 @@ export default function AuditsList() {
       date: formData.date,
     };
 
-    setAuditItems((prev) => [nextAudit, ...prev]);
-    setFormData(defaultForm);
+    setAuditItems(prev => [tempAudit, ...prev]);
+
     setIsCreating(false);
-  };
+
+    const response = await fetch(
+      'http://localhost:8000/api/audits/generate',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          type_audit: formData.type,
+          site_audit: formData.site
+        })
+      }
+    );
+
+    const data = await response.json();
+    setAuditItems(prev =>
+      prev.map(audit =>
+        audit.id === tempId
+          ? {
+              ...audit,
+              id: data.checklist_id,
+              reference: data.checklist_id,
+              status: 'in_progress'
+            }
+          : audit
+      )
+    );
+
+  } catch (error) {
+
+    setAuditItems(prev =>
+      prev.map(audit =>
+        audit.status === 'draft'
+          ? {
+              ...audit,
+              status: 'error'
+            }
+          : audit
+      )
+    );
+  }
+};
 
   return (
     <div className="space-y-6">
