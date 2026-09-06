@@ -40,8 +40,8 @@ def get_audit_history(type_audit: str,site_audit: str) -> dict:
 
     return {
         "historique_disponible": True,
-        "checklist_id": report.get(
-            "checklist_id"
+        "audit_id": report.get(
+            "audit_id"
         ),
         "non_conformites": report.get(
             "non_conformites",

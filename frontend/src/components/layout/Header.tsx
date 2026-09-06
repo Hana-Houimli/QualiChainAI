@@ -10,14 +10,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b border-surface-border bg-surface-card/80 px-4 backdrop-blur-md dark:border-dark-border dark:bg-dark-card/80 sm:px-6">
-      <div className="relative w-full max-w-md">
-        <Icon name="Search" size={17} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-secondary dark:text-dark-subtext" />
-        <input
-          type="text"
-          placeholder="Rechercher audits, documents, CAPA…"
-          className="h-10 w-full rounded-xl border border-surface-border bg-surface-bg pl-9 pr-4 text-sm text-ink-primary placeholder:text-ink-secondary/70 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 dark:border-dark-border dark:bg-dark-bg dark:text-dark-text"
-        />
-      </div>
+      
 
       <div className="ml-auto flex items-center gap-1.5">
         <button
@@ -48,21 +41,7 @@ export function Header() {
           {notifOpen && (
             <div className="absolute right-0 mt-2 w-80 animate-slide-up rounded-2xl border border-surface-border bg-surface-card p-2 shadow-elevated dark:border-dark-border dark:bg-dark-card">
               <p className="px-3 py-2 text-sm font-semibold text-ink-primary dark:text-dark-text">Notifications</p>
-              {[
-                { title: 'Excursion de température', desc: 'Chambre froide 2 - Tunis dépasse le seuil', time: 'il y a 12 min', tone: 'danger' },
-                { title: 'CAPA en retard', desc: 'CAPA-2026-113 arrive à échéance demain', time: 'il y a 1 h', tone: 'warning' },
-                { title: 'Document approuvé', desc: 'SOP-QA-014 v4.2 a été validé', time: 'il y a 3 h', tone: 'success' },
-              ].map((n, i) => (
-                <div key={i} className="flex gap-3 rounded-xl px-3 py-2.5 hover:bg-slate-50 dark:hover:bg-white/5">
-                  <span className={cn('mt-1 h-2 w-2 shrink-0 rounded-full',
-                    n.tone === 'danger' ? 'bg-danger' : n.tone === 'warning' ? 'bg-warning' : 'bg-success')} />
-                  <div>
-                    <p className="text-sm font-medium text-ink-primary dark:text-dark-text">{n.title}</p>
-                    <p className="text-xs text-ink-secondary dark:text-dark-subtext">{n.desc}</p>
-                    <p className="mt-0.5 text-[11px] text-ink-secondary/60 dark:text-dark-subtext/60">{n.time}</p>
-                  </div>
-                </div>
-              ))}
+              
             </div>
           )}
         </div>

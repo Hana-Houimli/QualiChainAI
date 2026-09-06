@@ -7,18 +7,18 @@ db = client["qualichainAI"]
 checklist_collection = db["audit_checklists"]
 
 @tool
-def get_nonconformities(checklist_id: str) -> dict:
+def get_nonconformities(audit_id: str) -> dict:
     """
     Récupère toutes les non-conformités d'une checklist d'audit.
     """
 
     checklist = checklist_collection.find_one(
-        {"checklist_id": checklist_id}
+        {"checklist_id": audit_id}
     )
 
     if not checklist:
         return {
-            "error": f"Aucune checklist trouvée pour {checklist_id}"
+            "error": f"Aucune checklist trouvée pour {audit_id}"
         }
 
     non_conformites = []

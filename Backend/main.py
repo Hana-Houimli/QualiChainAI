@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from api import chat_router, audit_router, analysis_router, capa_router , report_router
+from api import chat_router, audit_router, capa_router , report_router
 
 app = FastAPI(
     title="QualiChain AI API"
@@ -29,11 +29,6 @@ app.include_router(
     tags=["Audit"]
 )
 
-app.include_router(
-    analysis_router,
-    prefix="/api/analysis",
-    tags=["Analysis"]
-)
 
 app.include_router(
     capa_router,

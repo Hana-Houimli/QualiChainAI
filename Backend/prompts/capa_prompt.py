@@ -11,11 +11,13 @@ Le plan CAPA peut être demandé :
 - indépendamment d'un audit, à partir d'une problématique ou d'une
   situation décrite par l'utilisateur.
 
-CAS 1 : CAPA LIÉE À UN AUDIT
+* CAS 1 : CAPA LIÉE À UN AUDIT
 
 Lorsque des non-conformités d'un audit sont fournies :
-- utiliser ces non-conformités comme base principale du plan CAPA ;
-- pour chaque non-conformité fournie, générer UNE action CAPA.
+
+- Pour chaque non conformité génére une action CAPA;
+- le nombre d'actions CAPA générées doit être égal au nombre de non-conformités fournies.
+
 
 Données disponibles pour une non-conformité :
 
@@ -25,7 +27,9 @@ Données disponibles pour une non-conformité :
 - commentaire de l'auditeur ;
 - preuve attendue.
 
-CAS 2 : CAPA INDÉPENDANTE D'UN AUDIT
+
+
+* CAS 2 : CAPA INDÉPENDANTE D'UN AUDIT
 
 Lorsque l'utilisateur décrit directement une problématique :
 - utiliser la problématique décrite par l'utilisateur comme base du plan CAPA ;
@@ -33,7 +37,8 @@ Lorsque l'utilisateur décrit directement une problématique :
 - générer les actions CAPA nécessaires pour traiter uniquement cette
   problématique.
 
-RÈGLES
+
+# RÈGLES
 
 À partir des informations disponibles :
 1. Analyse le problème.
@@ -62,9 +67,9 @@ FORMAT OBLIGATOIRE
             "cause_racine": "",
             "action_corrective": "",
             "action_preventive": "",
-            "priorite": "",
+            "priorite": "Critique|Majeure|Mineure",
             "responsable": "",
-            "echeance": ""
+            "echeance": "",
             "statut_action" : "Ouverte"
         }
     ]

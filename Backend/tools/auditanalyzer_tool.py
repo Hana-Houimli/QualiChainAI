@@ -9,7 +9,7 @@ db = client["qualichainAI"]
 checklists_collection = db["audit_checklists"]
 
 @tool
-def analyze_checklist(checklist_id: str) -> dict:
+def analyze_checklist(audit_id: str) -> dict:
     """
     Récupère une checklist d'audit remplie depuis MongoDB
     et calcule les indicateurs de conformité.
@@ -17,7 +17,7 @@ def analyze_checklist(checklist_id: str) -> dict:
 
     # Récupérer la checklist depuis MongoDB
     checklist = checklists_collection.find_one(
-    {"checklist_id": checklist_id},
+    {"audit_id": audit_id},
     {"_id": 0}
 )
     if not checklist:
@@ -27,7 +27,6 @@ def analyze_checklist(checklist_id: str) -> dict:
 
     conformes = 0
     non_conformes = 0
-    partiellement_conformes = 0
     non_applicables = 0
 
     # Parcourir les sections
@@ -49,9 +48,6 @@ def analyze_checklist(checklist_id: str) -> dict:
             elif resultat == "non conforme":
                 non_conformes += 1
 
-            elif resultat == "partiellement conforme":
-                partiellement_conformes += 1
-
             elif resultat == "non applicable":
                 non_applicables += 1
 
@@ -59,7 +55,6 @@ def analyze_checklist(checklist_id: str) -> dict:
     total_points = (
         conformes
         + non_conformes
-        + partiellement_conformes
     )
 
     # Calcul du score
@@ -67,7 +62,6 @@ def analyze_checklist(checklist_id: str) -> dict:
         score_conformite = round(
             (
                 conformes
-                + 0.5 * partiellement_conformes
             )
             / total_points
             * 100,
@@ -93,7 +87,6 @@ def analyze_checklist(checklist_id: str) -> dict:
         "total_points": total_points,
         "conformes": conformes,
         "non_conformes": non_conformes,
-        "partiellement_conformes": partiellement_conformes,
         "non_applicables": non_applicables
     }
 }

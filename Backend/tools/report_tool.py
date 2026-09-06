@@ -5,7 +5,7 @@ from langchain.tools import tool
 client = MongoClient("mongodb://localhost:27017/")
 
 db = client["qualichainAI"]
-audit_checklists_collection = db["audit_checklists"]
+audit_collection = db["audit_checklists"]
 capa_collection = db["capa_plans"]
 
 @tool
@@ -15,8 +15,8 @@ def get_report_data(entity_id: str, report_type: str) -> dict:
     """
     if report_type == "audit":
 
-        audit = audit_checklists_collection.find_one(
-            {"checklist_id": entity_id},
+        audit = audit_collection.find_one(
+            {"audit_id": entity_id},
             {"_id": 0}
         )
 
@@ -27,7 +27,7 @@ def get_report_data(entity_id: str, report_type: str) -> dict:
 
         capa = capa_collection.find_one(
         {
-            "checklist_id": entity_id
+            "audit_id": entity_id
         },
         {
             "_id": 0
@@ -39,7 +39,7 @@ def get_report_data(entity_id: str, report_type: str) -> dict:
                 "informations_generales": {
                     "type_audit": audit.get("type_audit"),
                     "site_audit": audit.get("site_audit"),
-                    "date_audit": audit.get("date_audit").strftime("%d/%m/%Y"),
+                    "date_audit": audit.get("date_audit"),
                     "responsable": audit.get("responsable")
                 },
                 "analysis": audit.get("analysis")

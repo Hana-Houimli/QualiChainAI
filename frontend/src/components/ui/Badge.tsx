@@ -38,18 +38,31 @@ export function Badge({ tone = 'neutral', dot, className, children, ...props }: 
     </span>
   );
 }
-
 const statusToneMap: Record<string, Tone> = {
-  open: 'info', in_progress: 'warning', closed: 'success', overdue: 'danger',
-  draft: 'neutral', approved: 'success', expired: 'danger', review: 'warning',
-  normal: 'success', warning: 'warning', alert: 'danger',
+  brouillon: 'neutral',
+  'en cours': 'warning',
+  terminé: 'success',
+  error: 'danger',
 };
 
 export function StatusBadge({ status }: { status: string }) {
-  const tone = statusToneMap[status] ?? 'neutral';
+  const normalizedStatus = status.trim().toLowerCase();
+
+  const tone = statusToneMap[normalizedStatus] ?? 'neutral';
+
+  const labelMap: Record<string, string> = {
+    brouillon: 'Brouillon',
+    'en cours': 'En cours',
+    terminé: 'Terminé',
+    error: 'Erreur',
+  };
+
+  const label =
+    labelMap[normalizedStatus] ?? normalizedStatus;
+
   return (
     <Badge tone={tone} dot>
-      {status.replace('_', ' ').replace(/\b\w/g, (c) => c.toUpperCase())}
+      {label}
     </Badge>
   );
 }

@@ -6,6 +6,5 @@ export const navItems: NavItem[] = [
   { label: 'Audits', path: '/audits', icon: 'ClipboardCheck' },
   { label: 'CAPA', path: '/capa', icon: 'ListChecks' },
   { label: 'Reports', path: '/reports', icon: 'BarChart3' },
-  { label: 'Administration', path: '/administration', icon: 'Users' },
   { label: 'Settings', path: '/settings', icon: 'Settings' },
 ];

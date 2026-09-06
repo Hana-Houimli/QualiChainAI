@@ -1,11 +1,14 @@
 from fastapi import APIRouter, HTTPException
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
+from typing import Any
 from langchain_core.messages import HumanMessage
 from graph.workflow import app
 import json
-from utils import checklist_format
+from utils.checklist_format import checklist_format
 from pymongo import MongoClient
-
+import os
+from utils.generate_pdf import generate_pdf
 
 
 audit_router = APIRouter()
@@ -13,13 +16,27 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["qualichainAI"]
 audit_collection = db["audit_checklists"]
 
+PDF_DIR = "generated_checklists"
+
+os.makedirs(
+    PDF_DIR,
+    exist_ok=True
+)
+
 class ChecklistRequest(BaseModel):
     type_audit: str
     site_audit: str
+    responsable: str
+    date_audit : str
 
-class ChecklistUpdateRequest(BaseModel):
-    checklist: dict
+class AuditUpdateRequest(BaseModel):
+    sections: list[dict[str, Any]]
+    status: str
+    date_audit: str
+    responsable: str
 
+class auditIdRequest(BaseModel):
+    audit_id: str
 
 
 @audit_router.post("/generate")
@@ -40,22 +57,17 @@ def generate_checklist(request: ChecklistRequest):
     )
 
     content = result["messages"][-1].content
-
-    try:
-        checklist = checklist_format( json.loads(content) )
-    except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Erreur parsing checklist : {str(e)}"
-        )
+    checklist = checklist_format( json.loads(content) )
+    checklist["responsable"] = request.responsable
+    checklist["date_audit"] = request.date_audit
 
     # Générer un ID unique pour la checklist
-    checklist_id = (
-        f"CHK-{audit_collection.count_documents({}) + 1:03d}"
+    audit_id = (
+        f"AUD-{audit_collection.count_documents({}) + 1:03d}"
     )
 
     checklist = {
-        "checklist_id": checklist_id,
+        "audit_id": audit_id,
         **checklist
     }
     
@@ -63,7 +75,7 @@ def generate_checklist(request: ChecklistRequest):
     audit_collection.insert_one(checklist)
 
     return {
-        "checklist_id": checklist_id,
+        "audit_id": audit_id,
     }
 
 
@@ -75,63 +87,154 @@ def get_audits():
             {},
             {
                 "_id": 0,
-                "checklist_id": 1,
+                "audit_id": 1,
                 "type_audit": 1,
-                "site_audite": 1,
+                "site_audit": 1,
                 "status": 1,
-                "date_creation": 1,
                 "date_audit": 1,
-                "responsable": 1
+                "responsable": 1,
+                "analysis.score_conformite": 1
             }
         )
     )
 
     return audits
 
+@audit_router.delete("/{audit_id}")
+async def delete_audit(audit_id: str):
 
-@audit_router.get("/{checklist_id}")
-def get_audit(checklist_id: str):
+    result = audit_collection.delete_one({
+        "audit_id": audit_id
+    })
 
-    checklist = audit_collection.find_one(
+    if result.deleted_count == 0:
+        raise HTTPException(
+            status_code=404,
+            detail="Audit introuvable"
+        )
+
+    return {
+        "message": "Audit supprimé avec succès",
+        "audit_id": audit_id
+    }
+
+@audit_router.get("/{audit_id}")
+def get_audit(audit_id: str):
+
+    audit = audit_collection.find_one(
         {
-            "checklist_id": checklist_id
+            "audit_id": audit_id
         },
         {
             "_id": 0
         }
     )
 
-    if not checklist:
+    if not audit:
         raise HTTPException(
             status_code=404,
-            detail="Checklist introuvable."
+            detail="Audit introuvable."
         )
 
-    return checklist
+    return audit
 
-
-@audit_router.put("/{checklist_id}")
-def update_checklist(
-    checklist_id: str,
-    request: ChecklistUpdateRequest
+@audit_router.put("/{audit_id}")
+def update_audit(
+    audit_id: str,
+    request: AuditUpdateRequest
 ):
-
     result = audit_collection.update_one(
         {
-            "checklist_id": checklist_id
+            "audit_id": audit_id
         },
         {
-            "$set": request.checklist
+            "$set": {
+                "sections": request.sections,
+                "status": request.status,
+                "date_audit": request.date_audit,
+                "responsable": request.responsable
+            }
         }
     )
-
     if result.matched_count == 0:
         raise HTTPException(
             status_code=404,
-            detail="Checklist introuvable."
+            detail="Audit introuvable."
         )
 
     return {
-        "message": "Checklist sauvegardée avec succès.",
-        "checklist_id": checklist_id
+        "message": "Audit sauvegardé avec succès.",
+        "audit_id": audit_id
     }
+
+
+
+
+
+@audit_router.post("/analyze")
+def analyze_checklist(request: auditIdRequest):
+
+    result = app.invoke(
+        {
+            "messages": [
+                HumanMessage(
+                    content=(
+                        f"Analyser checklist "
+                        f"{request.audit_id}"
+                    )
+                )
+            ]
+        }
+    )
+    analysis = json.loads(result["messages"][-1].content)
+
+    audit_collection.update_one(
+        {
+            "audit_id": request.audit_id
+        },
+        {
+            "$set": {
+                "analysis": analysis
+            }
+        }
+    )
+
+
+    return {
+        "message": "Analyse générée avec succès.",
+        "audit_id": request.audit_id
+    }
+
+
+@audit_router.get("/pdf/audit/{audit_id}")
+def download_audit_pdf(audit_id: str):
+
+    audit = audit_collection.find_one(
+        {
+            "audit_id": audit_id
+        },
+        {
+            "_id": 0,
+            "analysis":0
+        }
+    )
+
+    filename = f"{audit_id}_checklist.pdf"
+
+    output_file = os.path.join(
+        PDF_DIR,
+        filename
+    )
+
+    generate_pdf(
+        data=audit,
+        output_file=output_file,
+        title=f"Checklist Audit {audit_id}"
+    )
+
+    return FileResponse(
+        path=output_file,
+        media_type="application/pdf",
+        filename=filename
+    )
+

@@ -37,7 +37,6 @@ Les valeurs suivantes doivent être reprises exactement telles qu'elles sont fou
 * total_points ;
 * conformes ;
 * non_conformes ;
-* partiellement_conformes ;
 * non_applicables.
 
 Ne jamais modifier ou recalculer ces valeurs.
@@ -66,7 +65,6 @@ Le JSON doit être structuré exactement comme ci-dessous.
         "total_points": 0,
         "conformes": 0,
         "non_conformes": 0,
-        "partiellement_conformes": 0,
         "non_applicables": 0
     },
     "non_conformites": [],
