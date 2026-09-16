@@ -34,8 +34,7 @@ graph.add_conditional_edges(
     {
         "regulatory": "regulatory",
         "audit": "audit",
-        "report": "report",
-        "capa": "capa"
+        "report": "report"
     }
 )
 

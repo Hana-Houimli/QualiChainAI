@@ -11,7 +11,8 @@ import {
   type Column,
 } from '../../components/shared/DataTable';
 
-import type { AuditItem, AuditType } from '../../types';
+import type { AuditItem, AuditFormData, AuditType } from '../../types';
+import { auditService } from '../../services';
 
 
 // ==========================================================
@@ -56,13 +57,12 @@ const SITES_PHARMACEUTIQUES = [
 // FORMULAIRE PAR DEFAUT
 // ==========================================================
 
-const defaultForm = {
+const defaultForm: AuditFormData = {
   type: auditTypes[0],
   site: '',
   auditor: 'Hana Houimli',
   date: '',
 };
-
 
 // ==========================================================
 // COMPOSANT
@@ -108,76 +108,22 @@ export default function AuditsList() {
   // ========================================================
 
   useEffect(() => {
+  const fetchAudits = async () => {
+    try {
+      const audits =
+        await auditService.getAll();
 
-    const fetchAudits = async () => {
+      setAuditItems(audits);
+    } catch (error) {
+      console.error(
+        'Erreur lors de la récupération des audits :',
+        error
+      );
+    }
+  };
 
-      try {
-
-        const response = await fetch(
-          'http://localhost:8000/api/audits/'
-        );
-
-        if (!response.ok) {
-          throw new Error(
-            `Erreur serveur : ${response.status}`
-          );
-        }
-
-        const data = await response.json();
-
-        const audits: AuditItem[] = data.map(
-          (audit: any) => ({
-
-            id:
-              audit.audit_id,
-
-            reference:
-              audit.audit_id,
-
-            title:
-              `${audit.type_audit} - ${audit.site_audit}`,
-
-            site:
-              audit.site_audit,
-
-            auditor:
-              audit.responsable ||
-              'Non renseigné',
-
-            type:
-              audit.type_audit as AuditType,
-
-            status:
-              audit.status ||
-              'brouillon',
-
-            score:
-              audit.analysis?.score_conformite ??
-              null,
-
-            date:
-              audit.date_audit ||
-              '',
-
-          })
-        );
-
-        setAuditItems(audits);
-
-      } catch (error) {
-
-        console.error(
-          'Erreur lors de la récupération des audits :',
-          error
-        );
-
-      }
-
-    };
-
-    fetchAudits();
-
-  }, []);
+  fetchAudits();
+}, []);
 
 
   // ========================================================
@@ -185,58 +131,35 @@ export default function AuditsList() {
   // ========================================================
 
   const handleDeleteAudit = async (
-    auditId: string
-  ) => {
+  auditId: string
+) => {
+  const confirmed = window.confirm(
+    'Êtes-vous sûr de vouloir supprimer cet audit ?'
+  );
 
-    const confirmed = window.confirm(
-      'Êtes-vous sûr de vouloir supprimer cet audit ?'
+  if (!confirmed) {
+    return;
+  }
+
+  try {
+    await auditService.delete(auditId);
+
+    setAuditItems((prev) =>
+      prev.filter(
+        (audit) => audit.id !== auditId
+      )
+    );
+  } catch (error) {
+    console.error(
+      "Erreur lors de la suppression de l'audit :",
+      error
     );
 
-    if (!confirmed) {
-      return;
-    }
-
-    try {
-
-      const response = await fetch(
-        `http://localhost:8000/api/audits/${auditId}`,
-        {
-          method: 'DELETE',
-        }
-      );
-
-      if (!response.ok) {
-
-        throw new Error(
-          `Erreur serveur : ${response.status}`
-        );
-
-      }
-
-      // Retirer l'audit du tableau
-      setAuditItems(
-        (prev) =>
-          prev.filter(
-            (audit) =>
-              audit.id !== auditId
-          )
-      );
-
-    } catch (error) {
-
-      console.error(
-        "Erreur lors de la suppression de l'audit :",
-        error
-      );
-
-      window.alert(
-        "Impossible de supprimer l'audit."
-      );
-
-    }
-
-  };
-
+    window.alert(
+      "Impossible de supprimer l'audit."
+    );
+  }
+};
 
   // ========================================================
   // COLONNES
@@ -479,49 +402,15 @@ export default function AuditsList() {
       // APPEL BACKEND
       // ----------------------------------------------------
 
-      const response =
-        await fetch(
-          'http://localhost:8000/api/audits/generate',
-          {
-            method: 'POST',
-
-            headers: {
-              'Content-Type':
-                'application/json',
-            },
-
-            body: JSON.stringify({
-
-              type_audit:
-                formData.type,
-
-              site_audit:
-                formData.site,
-
-              responsable:
-                formData.auditor,
-
-              date_audit:
-                formData.date,
-
-            }),
-
-          }
-        );
-
-
-      if (!response.ok) {
-
-        throw new Error(
-          `Erreur serveur : ${response.status}`
-        );
-
-      }
-
+      
 
       const data =
-        await response.json();
-
+          await auditService.generate({
+            type_audit: formData.type,
+            site_audit: formData.site,
+            responsable: formData.auditor,
+            date_audit: formData.date,
+          });
 
       if (!data.audit_id) {
 

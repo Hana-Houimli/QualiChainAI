@@ -4,8 +4,8 @@ import ReactMarkdown from 'react-markdown';
 import { Icon } from '../../components/ui/Icon';
 import { Button } from '../../components/ui/Button';
 import { cn } from '../../utils/cn';
-import type { ChatMessage } from '../../types';
-
+import type {ChatMessage,Conversation } from '../../types';
+import { chatService } from '../../services'
 const suggestions = [
   { icon: 'FileText', label: 'Rédiger un SOP de gestion des retours' },
   { icon: 'Scale', label: 'Citer les exigences réglementaires GDP' }
@@ -26,86 +26,66 @@ export default function AiAssistantPage() {
   const [conversationId, setConversationId] = useState<string>(
   crypto.randomUUID()
 );
-  const [conversations, setConversations] = useState<any[]>([]);
+  const [conversations, setConversations] =
+  useState<Conversation[]>([]);
+  
   useEffect(() => {
-    fetch('http://localhost:8000/api/conversations')
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}`);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setConversations(data);
-      })
-      .catch((err) => {
-        console.error('Erreur chargement conversations:', err);
-      });
-  }, []);
-
-  const loadConversation = async (id: string) => {
-    try {
-      const res = await fetch(
-        `http://localhost:8000/api/conversations/${id}`
-      );
-
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
-      }
-
-      const data = await res.json();
-
-      const loadedMessages: ChatMessage[] = data.messages.map(
-        (msg: any) => ({
-          id: crypto.randomUUID(),
-          role: msg.role,
-          content: msg.content,
-          timestamp: 'now',
-        })
-      );
-
-      setConversationId(id);
-      setMessages(loadedMessages);
-    } catch (err) {
-      console.error('Erreur chargement conversation:', err);
-    }
-  };
-
-  const refreshConversations = async () => {
-    try {
-      const res = await fetch(
-        'http://localhost:8000/api/conversations'
-      );
-
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
-      }
-
-      const data = await res.json();
-
+  chatService
+    .getConversations()
+    .then((data) => {
       setConversations(data);
-    } catch (err) {
+    })
+    .catch((err) => {
       console.error(
-        'Erreur actualisation conversations:',
+        'Erreur chargement conversations:',
         err
       );
-    }
-  };
+    });
+}, []);
+
+  const loadConversation = async (id: string) => {
+  try {
+    const data =
+      await chatService.getConversation(id);
+
+    const loadedMessages: ChatMessage[] =
+      data.messages.map((msg) => ({
+        id: crypto.randomUUID(),
+        role: msg.role,
+        content: msg.content,
+        timestamp: 'now',
+      }));
+
+    setConversationId(id);
+    setMessages(loadedMessages);
+  } catch (err) {
+    console.error(
+      'Erreur chargement conversation:',
+      err
+    );
+  }
+};
+
+  const refreshConversations = async () => {
+  try {
+    const data =
+      await chatService.getConversations();
+
+    setConversations(data);
+  } catch (err) {
+    console.error(
+      'Erreur actualisation conversations:',
+      err
+    );
+  }
+};
+
+   
 
   const deleteConversation = async (id: string) => {
   try {
-    const res = await fetch(
-      `http://localhost:8000/api/conversations/${id}`,
-      {
-        method: 'DELETE',
-      }
-    );
+    await chatService.deleteConversation(id);
 
-    if (!res.ok) {
-      throw new Error(`HTTP ${res.status}`);
-    }
-
-    // Supprimer de la liste immédiatement
     setConversations((prev) =>
       prev.filter(
         (conversation) =>
@@ -113,16 +93,19 @@ export default function AiAssistantPage() {
       )
     );
 
-    // Si on vient de supprimer la conversation ouverte
     if (conversationId === id) {
       setMessages(initialMessages);
       setConversationId(crypto.randomUUID());
     }
-
   } catch (err) {
-    console.error('Erreur suppression conversation:', err);
+    console.error(
+      'Erreur suppression conversation:',
+      err
+    );
   }
 };
+
+
 
   const send = (text: string) => {
     if (!text.trim()) return;
@@ -133,18 +116,10 @@ export default function AiAssistantPage() {
 
     (async () => {
       try {
-        const res = await fetch('http://localhost:8000/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-                question: text,
-                conversation_id: conversationId
-              })
-        });
-
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-        const data = await res.json();
+        const data = await chatService.sendMessage(
+          text,
+          conversationId
+        );
         const assistantMsg: ChatMessage = {
           id: crypto.randomUUID(),
           role: 'assistant',

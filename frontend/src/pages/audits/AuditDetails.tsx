@@ -1,60 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import type {
+  Audit,
+  CapaPlan
+} from '../../types';
+import {
+  auditService, capaService , reportService } from '../../services'
 
-interface PointControle {
-  question: string;
-  criticite: string;
-  preuve_attendue: string;
-  resultat: string;
-  commentaire: string;
-}
 
-interface Section {
-  nom_section: string;
-  points_controle: PointControle[];
-}
 
-interface Analysis {
-  score_conformite: number;
-  statut_global: string;
-  resume: {
-    total_points: number;
-    conformes: number;
-    non_conformes: number;
-    non_applicables: number;
-  };
-  observations: string[];
-}
 
-interface Audit {
-  audit_id: string;
-  type_audit: string;
-  site_audit: string;
-  date_creation: string;
-  date_audit: string;
-  status: string;
-  responsable: string;
-  sections: Section[];
-  analysis?: Analysis;
-}
-
-interface CapaAction {
-  probleme: string;
-  cause_racine: string;
-  action_corrective: string;
-  action_preventive: string;
-  priorite: string;
-  responsable: string;
-  echeance: string;
-  statut_action: string;
-}
-
-interface CapaPlan {
-  capa_id: string;
-  audit_id: string;
-  resume: string;
-  actions: CapaAction[];
-}
 
 export default function AuditDetails() {
   const { id } = useParams<{ id: string }>();
@@ -96,9 +51,6 @@ export default function AuditDetails() {
       .replace(/_/g, ' ');
   };
 
-  /*
-   * Récupération de l'audit
-   */
   useEffect(() => {
   if (!id) return;
 
@@ -106,42 +58,16 @@ export default function AuditDetails() {
     try {
       setLoading(true);
 
-      // ==========================================
-      // RÉCUPÉRER L'AUDIT
-      // ==========================================
-
-      const response = await fetch(
-        `http://localhost:8000/api/audits/${id}`
-      );
-
-      if (!response.ok) {
-        throw new Error('Audit introuvable');
-      }
-
-      const data: Audit = await response.json();
+      const data =
+        await auditService.getById(id);
 
       setAudit(data);
 
-
-      // ==========================================
-      // RÉCUPÉRER LE CAPA EXISTANT
-      // ==========================================
-
       try {
-        const capaResponse = await fetch(
-          `http://localhost:8000/api/capa/audit/${id}`
-        );
+        const capaData =
+          await capaService.getByAudit(id);
 
-        if (capaResponse.ok) {
-          const capaData: CapaPlan =
-            await capaResponse.json();
-
-          setCapaPlan(capaData);
-        } else {
-          // Aucun CAPA pour cet audit
-          setCapaPlan(null);
-        }
-
+        setCapaPlan(capaData);
       } catch (capaError) {
         console.error(
           'Erreur récupération CAPA :',
@@ -150,7 +76,6 @@ export default function AuditDetails() {
 
         setCapaPlan(null);
       }
-
     } catch (error) {
       console.error(
         'Erreur récupération audit :',
@@ -162,7 +87,6 @@ export default function AuditDetails() {
   };
 
   fetchAudit();
-
 }, [id]);
 
   if (loading) {
@@ -341,118 +265,40 @@ export default function AuditDetails() {
   if (!audit) return;
 
   try {
-    // 1. Toujours sauvegarder les modifications
-    const response = await fetch(
-      `http://localhost:8000/api/audits/${audit.audit_id}`,
+    await auditService.update(
+      audit.audit_id,
       {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          sections: audit.sections,
-          status: audit.status,
-          date_audit: audit.date_audit,
-          responsable: audit.responsable,
-        }),
+        sections: audit.sections,
+        status: audit.status,
+        date_audit: audit.date_audit,
+        responsable: audit.responsable,
       }
     );
 
-    if (!response.ok) {
-      throw new Error('Erreur sauvegarde');
-    }
-
-    // 2. Générer l'analyse UNIQUEMENT
-    //    si la checklist a été modifiée
     if (checklistModified) {
-
-      // =========================
-      // GENERER ANALYSE
-      // =========================
-
-      const analysisResponse = await fetch(
-        'http://localhost:8000/api/audits/analyze',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            audit_id: audit.audit_id,
-          }),
-        }
+      await auditService.analyze(
+        audit.audit_id
       );
 
-      if (!analysisResponse.ok) {
-        throw new Error(
-          'Erreur génération analyse'
-        );
-      }
-
-
-      // =========================
-      // GENERER CAPA
-      // =========================
-
-      const capaResponse = await fetch(
-        'http://localhost:8000/api/capa/audit/generate',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            audit_id: audit.audit_id,
-          }),
-        }
+      await capaService.generateForAudit(
+        audit.audit_id
       );
 
-      if (!capaResponse.ok) {
-        throw new Error(
-          'Erreur génération CAPA'
+      const capaData =
+        await capaService.getByAudit(
+          audit.audit_id
         );
-      }
 
-    const capaDataResponse = await fetch(
-        `http://localhost:8000/api/capa/audit/${audit.audit_id}`
-      );
-
-      if (!capaDataResponse.ok) {
-        throw new Error(
-          'Erreur récupération CAPA'
-        );
-      }
-
-      const capaData: CapaPlan =
-        await capaDataResponse.json();
-
-      // IMPORTANT
       setCapaPlan(capaData);
     }
-    
 
-
-    // =========================
-    // RECUPERER AUDIT DE MONGODB
-    // =========================
-
-    const updatedAuditResponse =
-      await fetch(
-        `http://localhost:8000/api/audits/${audit.audit_id}`
+    const updatedAudit =
+      await auditService.getById(
+        audit.audit_id
       );
-
-    if (!updatedAuditResponse.ok) {
-      throw new Error(
-        'Erreur récupération audit'
-      );
-    }
-
-    const updatedAudit: Audit =
-      await updatedAuditResponse.json();
 
     setAudit(updatedAudit);
 
-    // Reset
     setChecklistModified(false);
     setIsEditing(false);
 
@@ -461,9 +307,7 @@ export default function AuditDetails() {
         ? 'Audit, analyse et CAPA enregistrés avec succès'
         : 'Audit enregistré avec succès'
     );
-
   } catch (error) {
-
     console.error(
       'Erreur sauvegarde audit :',
       error
@@ -476,10 +320,8 @@ export default function AuditDetails() {
 };
 
 const handleGenerateReport = async () => {
-
   if (!audit) return;
 
-  // Vérification frontend
   if (!audit.analysis) {
     alert(
       "L'analyse doit être générée avant le rapport."
@@ -495,61 +337,29 @@ const handleGenerateReport = async () => {
   }
 
   try {
-
     setGeneratingReport(true);
 
-    const response = await fetch(
-      'http://localhost:8000/api/reports/generate',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          audit_id: audit.audit_id,
-        }),
-      }
-    );
-
-
-    const data = await response.json();
-
-
-    if (!response.ok) {
-      throw new Error(
-        data.detail ||
-        'Erreur génération rapport'
+    const data =
+      await reportService.generate(
+        audit.audit_id
       );
-    }
 
-
-    // -----------------------------------------
-    // Mettre à jour le statut local
-    // -----------------------------------------
-
-    setAudit(prev => {
-
+    setAudit((prev) => {
       if (!prev) return prev;
 
       return {
         ...prev,
-        status: 'Terminé'
+        status: 'Terminé',
       };
-
     });
 
-
     setReportGenerated(true);
-
 
     alert(
       `Rapport ${data.report_id} généré avec succès.\n\n` +
       `Vous pouvez maintenant le consulter dans la page Reports.`
     );
-
-
   } catch (error) {
-
     console.error(
       'Erreur génération rapport :',
       error
@@ -560,14 +370,10 @@ const handleGenerateReport = async () => {
         ? error.message
         : 'Erreur lors de la génération du rapport.'
     );
-
   } finally {
-
     setGeneratingReport(false);
-
   }
 };
-
 
 
   return (
@@ -840,7 +646,7 @@ const handleGenerateReport = async () => {
       <button
         onClick={() => {
           window.open(
-            `http://localhost:8000/api/audits/pdf/audit/${audit.audit_id}`,
+            auditService.getPdfUrl(audit.audit_id),
             '_blank'
           );
         }}

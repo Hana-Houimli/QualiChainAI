@@ -7,65 +7,9 @@ import { Icon } from '../../components/ui/Icon';
 import { Badge } from '../../components/ui/Badge';
 import { Card } from '../../components/ui/Card';
 import { cn } from '../../utils/cn';
+import type {CapaPriority , CapaStatus , CapaSourceFilter, CapaAction ,CapaCard,CapaPlan } from '../../types'
+import { capaService } from '../../services';
 
-// ==========================================================
-// TYPES
-// ==========================================================
-
-type CapaStatus =
-  | 'Ouverte'
-  | 'Terminé'
-  | 'Expiré';
-
-type CapaPriority =
-  | 'Mineure'
-  | 'Majeure'
-  | 'Critique';
-
-type CapaSourceFilter =
-  | 'Toutes'
-  | 'Audits'
-  | 'Réclamations';
-
-interface CapaAction {
-  probleme: string;
-  cause_racine: string;
-  action_corrective: string;
-  action_preventive: string;
-  priorite: CapaPriority;
-  responsable: string;
-  echeance: string;
-  statut_action: CapaStatus;
-}
-
-interface CapaPlan {
-  created_at: string;
-  capa_id: string;
-  audit_id?: string;
-  description_probleme?: string;
-  resume: string;
-  actions: CapaAction[];
-}
-
-interface CapaCard {
-  id: string;
-  capaId: string;
-  actionIndex: number;
-  reference: string;
-  title: string;
-  source: string;
-  owner: string;
-  priority: CapaPriority;
-  status: CapaStatus;
-  dueDate: string;
-  progress: number;
-  action: CapaAction;
-  capa: CapaPlan;
-}
-
-// ==========================================================
-// COLONNES
-// ==========================================================
 
 const columns: {
   key: CapaStatus;
@@ -192,18 +136,7 @@ export default function CapaBoard() {
     try {
       setLoading(true);
 
-      const response = await fetch(
-        'http://localhost:8000/api/capa/'
-      );
-
-      if (!response.ok) {
-        throw new Error(
-          `Erreur serveur : ${response.status}`
-        );
-      }
-
-      const data: CapaPlan[] =
-        await response.json();
+      const data = await capaService.getAll();
 
       setCapaItems(data);
 
@@ -264,35 +197,7 @@ export default function CapaBoard() {
 
       setGenerating(true);
 
-      const response = await fetch(
-        'http://localhost:8000/api/capa/generate',
-        {
-          method: 'POST',
-
-          headers: {
-            'Content-Type': 'application/json',
-          },
-
-          body: JSON.stringify({
-            message: problem,
-          }),
-        }
-      );
-
-      if (!response.ok) {
-
-        const errorData =
-          await response.json().catch(
-            () => null
-          );
-
-        throw new Error(
-          errorData?.detail ||
-          `Erreur serveur : ${response.status}`
-        );
-      }
-
-      await response.json();
+      await capaService.generate(problem);
 
       setProblem('');
       setIsCreating(false);
@@ -522,27 +427,13 @@ export default function CapaBoard() {
 
           try {
 
-            const response =
-              await fetch(
-                `http://localhost:8000/api/capa/${capa.capa_id}/actions/${index}/status`,
-                {
-                  method: 'PATCH',
+            await capaService.updateActionStatus(
+                    capa.capa_id,
+                    index,
+                    'Expiré'
+                  );
 
-                  headers: {
-                    'Content-Type':
-                      'application/json',
-                  },
-
-                  body: JSON.stringify({
-                    statut_action:
-                      'Expiré',
-                  }),
-                }
-              );
-
-            if (response.ok) {
-              hasChanged = true;
-            }
+            hasChanged = true;
 
           } catch (error) {
 
@@ -558,22 +449,10 @@ export default function CapaBoard() {
 
     // Recharger après modification
     if (hasChanged) {
-
-      const response =
-        await fetch(
-          'http://localhost:8000/api/capa/'
-        );
-
-      if (response.ok) {
-
-        const updatedData:
-          CapaPlan[] =
-          await response.json();
-
-        setCapaItems(
-          updatedData
-        );
-      }
+      const updatedData =await capaService.getAll();
+      setCapaItems(updatedData);
+      
+      
     }
   };
 
@@ -633,38 +512,7 @@ export default function CapaBoard() {
 
       setSavingStatus(true);
 
-      const response =
-        await fetch(
-          `http://localhost:8000/api/capa/${selectedAction.capa.capa_id}/actions/${selectedAction.actionIndex}/status`,
-          {
-            method: 'PATCH',
-
-            headers: {
-              'Content-Type':
-                'application/json',
-            },
-
-            body: JSON.stringify({
-              statut_action:
-                newStatus,
-            }),
-          }
-        );
-
-      if (!response.ok) {
-
-        const errorData =
-          await response
-            .json()
-            .catch(
-              () => null
-            );
-
-        throw new Error(
-          errorData?.detail ||
-          `Erreur serveur : ${response.status}`
-        );
-      }
+      await capaService.updateActionStatus(selectedAction.capa.capa_id,selectedAction.actionIndex,newStatus);
 
       setSelectedAction(null);
 
@@ -740,28 +588,7 @@ export default function CapaBoard() {
 
       setDeleting(true);
 
-      const response =
-        await fetch(
-          `http://localhost:8000/api/capa/${deletingAction.capa.capa_id}/actions/${deletingAction.actionIndex}`,
-          {
-            method: 'DELETE',
-          }
-        );
-
-      if (!response.ok) {
-
-        const errorData =
-          await response
-            .json()
-            .catch(
-              () => null
-            );
-
-        throw new Error(
-          errorData?.detail ||
-          `Erreur serveur : ${response.status}`
-        );
-      }
+      await capaService.deleteAction(deletingAction.capa.capa_id,deletingAction.actionIndex);
 
       // Fermer la confirmation
       setDeletingAction(null);
